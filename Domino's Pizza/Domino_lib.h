@@ -10,19 +10,19 @@
 #include <conio.h>
 #include <time.h>
 
-// ################## Define tipos de variÃ¡veis ##################
-typedef int tp_card; // Para o tipo de peÃ§a
+// ################## Define tipos de variáveis ##################
+typedef int tp_card; // Para o tipo de peça
 typedef int ret_resp; // Para os tipos de retorno
 
 // ################## Importando bibliotecas ##################
 
-#ifndef LISTA_DE // Lista dinamica duplamente encadeada onde ficarÃ£o as peÃ§as jogadas
+#ifndef LISTA_DE // Lista dinamica duplamente encadeada onde ficarão as peças jogadas
 #include ".\LibList\ListaDE.h"
 typedef tp_listade tp_jogada;
 #define LISTA_DE
 #endif
 
-#ifndef LISTADIN_H // LISTA DINAMICA SIMPLES PARA A MÃƒO DO JOGADOR
+#ifndef LISTADIN_H // LISTA DINAMICA SIMPLES PARA A MÃO DO JOGADOR
 #include ".\LibList\lista_dinamica.h"
 typedef tp_listad tp_hand;
 #define LISTADIN_H
@@ -34,36 +34,46 @@ typedef tp_stack tp_deck; // declara uma struct da biblioteca Stack
 #define PILHA_H
 #endif
 
-//################## DeclaraÃ§Ã£o das funÃ§Ãµes ##################
+//################## Declaração das funções ##################
 // Hand funcionts
 ret_resp shuffle_cards(tp_deck *deck_to_shuffle); // MIGUEL OK
+// A.I.
+tp_hand *AIChoose_card(tp_hand *AI_hand, tp_jogada *jogo);
+ret_resp AIPlay(tp_hand *ai_hand, tp_jogada *jogo); // RICCARDO
 //Player functions
+ret_resp play_card(tp_hand *p_hand, tp_jogada *jogo);
+ret_resp pickupCard(tp_deck *deck_stack, tp_hand *p_hand);
+//In-Game funcionts
+void passTurn(int *p_turn); 
 /*ret_resp pickupCard(tp_deck *deck_stack, tp_hand *p_hand); // JANDER
+ret_resp AllotCards(tp_hand *p1, tp_hand *p2, tp_deck *baralho); // JANDER
 node_game *choose_card(); // RICC Busca item
 ret_resp play_card(tp_hand *p_hand); // JAFE
 ret_resp checkWin(tp_deck *p_hand, int p_turn); // JAFE
 //A.I.
-ret_resp AIPlay(tp_hand *ai_hand); // RICCARDO
-ret_resp AIPickUp(tp_deck *deck_stack, tp_hand *ai_hand); // JANDER
 node_game *AIChoose_card(); // MIGUEL OK
 //In-game funcionts
 void introduction();
-void passTurn(int *p_turn); // 
-ret_resp choosGameType(); // 
+void passTurn(int *p_turn); // Gabriel
+ret_resp choosGameType(); // Gabriel
 //Game JANDER
 int game(); //*/
 
-// ################## Criar funÃ§Ãµes ##################
+// ################## Criar funções ##################
+void passTurn(int *p_turn) {
+	printf("passa turno\n");
+}
+
 ret_resp shuffle_cards(tp_deck *deck_to_shuffle)/*criar e embaralhar o deck*/ {
 	int x,y,tamanhopilha = 0;
 	/*inicializou*/
 	start_stack(deck_to_shuffle);
 	srand((unsigned)time(NULL));
-	x = rand() % 7;/*gerar numero aleatorio de 0-6*/
+	x = rand() % 7;
 	y = rand() % 7;
 	while(tamanhopilha != MAX_STACK)/*verificar se ainda n prencheu tudo*/{
 		if(stack_lookup(*deck_to_shuffle, x, y) == 0){
-			push(deck_to_shuffle, x, y);/*colocar os numeros gerados na pilha*/
+			push(deck_to_shuffle, x, y);
 			tamanhopilha++;
 		}else{
 			x = rand() % 7;
@@ -74,16 +84,21 @@ ret_resp shuffle_cards(tp_deck *deck_to_shuffle)/*criar e embaralhar o deck*/ {
 	/*retorna 1 dizendo que prencheu*/
 }
 
-tp_hand *AIChoose_card(tp_hand *AI_hand) /*verificar a mao do IA*/ {
+ret_resp pickupCard(tp_deck *deck_stack, tp_hand *p_hand) {
+	return 1;
+}
+
+tp_hand *AIChoose_card(tp_hand *AI_hand, tp_jogada *jogo) /*verificar a mao do IA*/ {
 	/*se ele tiver uma peca jogar*/
-	tp_jogada *jogo;
 	tp_hand *x;
 	tp_hand *y;
-	if((x == NULL)||(y==NULL)){
-		return NULL;
-	}
-	x = listad_search_for(&AI_hand,jogo->ini->v_L,jogo->ini->v_R);
-	y = listad_search_for(&AI_hand,jogo->fim->v_L,jogo->fim->v_R);
+	tp_no *jg1;
+	tp_no *jg2;
+	jg1 = jogo->ini;
+	jg2 = jogo->fim;
+	if(jg1 == NULL || jg2 == NULL) return NULL;
+	x = listad_search_for(&AI_hand, jg1->v_L, jg1->v_R);
+	y = listad_search_for(&AI_hand, jg2->v_L, jg2->v_R);
 	if(x != NULL){		
 		return x;/*se conseguiu achar no ini*/
 	} else if(y != NULL){
@@ -91,6 +106,28 @@ tp_hand *AIChoose_card(tp_hand *AI_hand) /*verificar a mao do IA*/ {
 	} else{
 		return NULL;/*se n conseguir*/	
 	}	
+}
+
+ret_resp play_card(tp_hand *p_hand, tp_jogada *jogo) {
+	return 1;
+}
+
+ret_resp AIPlay(tp_hand *ai_hand, tp_jogada *jogo, tp_deck *baralho) {
+	// Lógica
+	// Checar se tem cartas para jogar na mesa
+	// Caso haja, jogue
+	// Caso não tenha, cave
+	tp_hand *aux;
+	aux = AIChoose_card(aux, jogo); // Escolha uma peça que possa encaixar
+	if(aux == NULL) { // Caso for nulo
+		// Não há cartas para serem jogadas
+		pickupCard(baralho, ai_hand); // cava
+		return 0;
+	} else { // se não
+		// Há peças que podem ser jogadas
+		play_card(aux, jogo); // jogue a peça
+		return 1;
+	}
 }
 
 #endif

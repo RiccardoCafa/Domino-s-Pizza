@@ -21,7 +21,7 @@ tp_listade *inicializa_listade() {
 	lista->fim = NULL;
 	return lista;
 }
-//TESTE
+
 tp_no *aloca() {
 	tp_no *pt;
 	pt = (tp_no *) malloc(sizeof(tp_no));
@@ -87,7 +87,7 @@ void imprime_listad(tp_listade *lista, int ordem) {
 	printf("\n");
 }
 
-int listad_vazia(tp_listade *lista) {
+int listade_vazia(tp_listade *lista) {
 	if((lista->ini == NULL) && (lista->fim==NULL)) return 1;
 	return 0;
 }

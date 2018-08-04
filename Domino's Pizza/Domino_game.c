@@ -1,16 +1,38 @@
 //########################## DOMINÓ #####################################
 #include <stdio.h>
 #include <stdlib.h>
+#include <conio.h>
 #include "Domino_lib.h"
 
 
 int main() {
 	tp_deck baralho;
-	//shuffle_cards(&baralho);
-	//print_stack(baralho);
 	tp_jogada *jogo;
-	jogo = inicializa_filad();
-	listad_insere_peca(&jogo, 2, 4);
+	tp_hand *p1;
+	tp_hand *p2;
+	tp_hand *aux;
+	p1 = inicializa_listad();
+	p2 = inicializa_listad();
+	jogo = inicializa_listade();
+	
+	shuffle_cards(&baralho);
+	printf("Baralho:\n");
+	print_stack(baralho);
+	printf("Pression qualquer tecla para continuar...\n");
+	getch();
+	system("cls");
+	listad_insere_peca(&p1, 2, 5);
+	listad_insere_peca(&p1, 4, 7);
+	listad_insere_peca(&p1, 2, 1);
+	listad_insere_peca(&p1, 6, 3);
+	insere_lista_no_fim(jogo, 1, 2);
+	insere_lista_no_fim(jogo, 2, 3);
+	insere_lista_no_inicio(jogo, 4, 7);
+	printf("1");
+	aux = AIChoose_card(p1, jogo);
+	printf("2");
+	if(aux == NULL) printf("-1");
+	else printf("-2");
 	//istad_insere_peca
 	/*tp_hand *m_player;
 	tp_hand *h_to_seek;

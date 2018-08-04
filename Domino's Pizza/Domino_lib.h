@@ -60,6 +60,10 @@ ret_resp choosGameType(); // Gabriel
 int game(); //*/
 
 // ################## Criar funções ##################
+introduction() {
+	printf("INTRODUCITON\n");
+}
+
 void passTurn(int *p_turn) {
 	printf("passa turno\n");
 }
@@ -69,11 +73,11 @@ ret_resp shuffle_cards(tp_deck *deck_to_shuffle)/*criar e embaralhar o deck*/ {
 	/*inicializou*/
 	start_stack(deck_to_shuffle);
 	srand((unsigned)time(NULL));
-	x = rand() % 7;
+	x = rand() % 7; /*gerar numero aleatorio de 0-6*/
 	y = rand() % 7;
 	while(tamanhopilha != MAX_STACK)/*verificar se ainda n prencheu tudo*/{
 		if(stack_lookup(*deck_to_shuffle, x, y) == 0){
-			push(deck_to_shuffle, x, y);
+			push(deck_to_shuffle, x, y); /*colocar os numeros gerados na pilha*/
 			tamanhopilha++;
 		}else{
 			x = rand() % 7;

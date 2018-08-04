@@ -1,8 +1,9 @@
-## Welcome to GitHub Pages
+## Bem-vindo ao Dominó em C
 
-You can use the [editor on GitHub](https://github.com/RiccardoCafa/Domino-s-Pizza/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+Essa página é dedicada ao jogo sendo realizado por estudantes da engenharia de computação do SENAI CIMATEC. 
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+Equipe composta por: Riccardo Cafagna, Jander Silva, Miguel Falcão, Gabriel Melo e Jafe Ferreira. 
+Orientado por: Márcio Soussa
 
 ### Markdown
 

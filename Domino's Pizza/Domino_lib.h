@@ -58,7 +58,7 @@ void passTurn(int *p_turn); // Gabriel
 ret_resp choosGameType(); // Gabriel
 //Game JANDER
 int game(); //*/
-
+//ESTE COMENTARIO é um teste para o branches
 // ################## Criar funções ##################
 introduction() {
 	printf("INTRODUCITON\n");

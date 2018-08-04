@@ -10,19 +10,19 @@
 #include <conio.h>
 #include <time.h>
 
-// ################## Define tipos de variáveis ##################
-typedef int tp_card; // Para o tipo de peça
+// ################## Define tipos de variÃ¡veis ##################
+typedef int tp_card; // Para o tipo de peÃ§a
 typedef int ret_resp; // Para os tipos de retorno
 
 // ################## Importando bibliotecas ##################
 
-#ifndef LISTA_DE // Lista dinamica duplamente encadeada onde ficarão as peças jogadas
+#ifndef LISTA_DE // Lista dinamica duplamente encadeada onde ficarÃ£o as peÃ§as jogadas
 #include ".\LibList\ListaDE.h"
 typedef tp_listade tp_jogada;
 #define LISTA_DE
 #endif
 
-#ifndef LISTADIN_H // LISTA DINAMICA SIMPLES PARA A MÃO DO JOGADOR
+#ifndef LISTADIN_H // LISTA DINAMICA SIMPLES PARA A MÃƒO DO JOGADOR
 #include ".\LibList\lista_dinamica.h"
 typedef tp_listad tp_hand;
 #define LISTADIN_H
@@ -34,7 +34,7 @@ typedef tp_stack tp_deck; // declara uma struct da biblioteca Stack
 #define PILHA_H
 #endif
 
-//################## Declaração das funções ##################
+//################## DeclaraÃ§Ã£o das funÃ§Ãµes ##################
 // Hand funcionts
 ret_resp shuffle_cards(tp_deck *deck_to_shuffle); // MIGUEL OK
 //Player functions
@@ -53,17 +53,17 @@ ret_resp choosGameType(); //
 //Game JANDER
 int game(); //*/
 
-// ################## Criar funções ##################
+// ################## Criar funÃ§Ãµes ##################
 ret_resp shuffle_cards(tp_deck *deck_to_shuffle)/*criar e embaralhar o deck*/ {
 	int x,y,tamanhopilha = 0;
 	/*inicializou*/
 	start_stack(deck_to_shuffle);
 	srand((unsigned)time(NULL));
-	x = rand() % 7;
+	x = rand() % 7;/*gerar numero aleatorio de 0-6*/
 	y = rand() % 7;
 	while(tamanhopilha != MAX_STACK)/*verificar se ainda n prencheu tudo*/{
 		if(stack_lookup(*deck_to_shuffle, x, y) == 0){
-			push(deck_to_shuffle, x, y);
+			push(deck_to_shuffle, x, y);/*colocar os numeros gerados na pilha*/
 			tamanhopilha++;
 		}else{
 			x = rand() % 7;
@@ -79,6 +79,9 @@ tp_hand *AIChoose_card(tp_hand *AI_hand) /*verificar a mao do IA*/ {
 	tp_jogada *jogo;
 	tp_hand *x;
 	tp_hand *y;
+	if((x == NULL)||(y==NULL)){
+		return NULL;
+	}
 	x = listad_search_for(&AI_hand,jogo->ini->v_L,jogo->ini->v_R);
 	y = listad_search_for(&AI_hand,jogo->fim->v_L,jogo->fim->v_R);
 	if(x != NULL){		

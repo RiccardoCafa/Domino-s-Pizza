@@ -1,4 +1,4 @@
-## Bem-vindo ao Dominó em C
+## Bem-vindo ao jogo de Dominó em C
 
 Essa página é dedicada ao jogo sendo realizado por estudantes da engenharia de computação do SENAI CIMATEC. 
 

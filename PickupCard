@@ -1,0 +1,16 @@
+ret_resp pickupCard(tp_deck *deck_stack, tp_hand *p_hand) {
+
+	pop(&deck_stack,&r_L, &r_R);
+	
+	if (stack_empyt(deck_stack)){
+		return 0;
+	} else {
+			
+	tp_item x = r_L;
+	tp_item y = r_R;
+	
+	listad_insere_peca(&p_hand, x, y);
+
+		return 1;
+	}		
+}

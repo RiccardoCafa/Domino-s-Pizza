@@ -10,19 +10,19 @@
 #include <conio.h>
 #include <time.h>
 
-// ################## Define tipos de vari·veis ##################
-typedef int tp_card; // Para o tipo de peÁa
+// ################## Define tipos de vari√°veis ##################
+typedef int tp_card; // Para o tipo de pe√ßa
 typedef int ret_resp; // Para os tipos de retorno
 
 // ################## Importando bibliotecas ##################
 
-#ifndef LISTA_DE // Lista dinamica duplamente encadeada onde ficar„o as peÁas jogadas
+#ifndef LISTA_DE // Lista dinamica duplamente encadeada onde ficar√£o as pe√ßas jogadas
 #include ".\LibList\ListaDE.h"
 typedef tp_listade tp_jogada;
 #define LISTA_DE
 #endif
 
-#ifndef LISTADIN_H // LISTA DINAMICA SIMPLES PARA A M√O DO JOGADOR
+#ifndef LISTADIN_H // LISTA DINAMICA SIMPLES PARA A M√ÉO DO JOGADOR
 #include ".\LibList\lista_dinamica.h"
 typedef tp_listad tp_hand;
 #define LISTADIN_H
@@ -34,7 +34,7 @@ typedef tp_stack tp_deck; // declara uma struct da biblioteca Stack
 #define PILHA_H
 #endif
 
-//################## DeclaraÁ„o das funÁıes ##################
+//################## Declara√ß√£o das fun√ß√µes ##################
 // Hand funcionts
 ret_resp shuffle_cards(tp_deck *deck_to_shuffle); // MIGUEL OK
 // A.I.
@@ -58,8 +58,8 @@ void passTurn(int *p_turn); // Gabriel
 ret_resp choosGameType(); // Gabriel
 //Game JANDER
 int game(); //*/
-//ESTE COMENTARIO È um teste para o branches
-// ################## Criar funÁıes ##################
+//ESTE COMENTARIO √© um teste para o branches
+// ################## Criar fun√ß√µes ##################
 introduction() {
 	printf("INTRODUCITON\n");
 }
@@ -86,6 +86,37 @@ ret_resp shuffle_cards(tp_deck *deck_to_shuffle)/*criar e embaralhar o deck*/ {
 	}
 	return 1;
 	/*retorna 1 dizendo que prencheu*/
+}
+
+ret_resp AllotCards(tp_deck *baralho, tp_hand *p1, tp_hand *p2) {	// Preenche a m√£o do jogador com as fichas;
+ 
+	int i;
+	tp_item x[i];
+	tp_item y[i];
+		
+		if (stack_empyt(baralho)) { // Verifica se o deck estah vazio;
+			return 0;
+		} else {
+			for (i=1; i<=7; i++) {	//P√¥r 7 fichas na m√£o do jogador;
+				
+				pop(&baralho, &r_L[i], &r_R[i]); // Retira as fichas do deck
+			
+					x[i] = r_L[i]; // Associa o valor esquerdo da ficha ao vetor "x[]";
+					y[i] = r_R[i]; // Associa o valor direito da ficha ao vetor "y[]";
+			
+				listad_insere_peca(&p1, x[i], y[i]); // Insere as fichas na m√£o do jogador.
+				
+				
+				pop(&baralho, &r_L[i], &r_R[i]); 
+				
+					x[i] = r_L[i];
+					y[i] = r_R[i]; 
+				
+				listad_insere_peca(&p2, x[j], y[j]);
+
+					return 1;
+			} 
+		}
 }
 
 ret_resp pickupCard(tp_deck *deck_stack, tp_hand *p_hand) {
@@ -117,19 +148,19 @@ ret_resp play_card(tp_hand *p_hand, tp_jogada *jogo) {
 }
 
 ret_resp AIPlay(tp_hand *ai_hand, tp_jogada *jogo, tp_deck *baralho) {
-	// LÛgica
+	// L√≥gica
 	// Checar se tem cartas para jogar na mesa
 	// Caso haja, jogue
-	// Caso n„o tenha, cave
+	// Caso n√£o tenha, cave
 	tp_hand *aux;
-	aux = AIChoose_card(aux, jogo); // Escolha uma peÁa que possa encaixar
+	aux = AIChoose_card(aux, jogo); // Escolha uma pe√ßa que possa encaixar
 	if(aux == NULL) { // Caso for nulo
-		// N„o h· cartas para serem jogadas
+		// N√£o h√° cartas para serem jogadas
 		pickupCard(baralho, ai_hand); // cava
 		return 0;
-	} else { // se n„o
-		// H· peÁas que podem ser jogadas
-		play_card(aux, jogo); // jogue a peÁa
+	} else { // se n√£o
+		// H√° pe√ßas que podem ser jogadas
+		play_card(aux, jogo); // jogue a pe√ßa
 		return 1;
 	}
 }

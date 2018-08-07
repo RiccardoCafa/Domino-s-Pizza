@@ -45,8 +45,8 @@ ret_resp play_card(tp_hand *p_hand, tp_jogada *jogo);
 ret_resp pickupCard(tp_deck *deck_stack, tp_hand *p_hand);
 //In-Game funcionts
 void passTurn(int *p_turn); 
-/*ret_resp pickupCard(tp_deck *deck_stack, tp_hand *p_hand); // JANDER
-ret_resp AllotCards(tp_hand *p1, tp_hand *p2, tp_deck *baralho); // JANDER
+/*ret_resp pickupCard(tp_deck *deck_stack, tp_hand *p_hand); // OK (TESTE)
+ret_resp AllotCards(tp_hand *p1, tp_hand *p2, tp_deck *baralho); // OK (TESTE)
 node_game *choose_card(); // RICC Busca item
 ret_resp play_card(tp_hand *p_hand); // JAFE
 ret_resp checkWin(tp_deck *p_hand, int p_turn); // JAFE

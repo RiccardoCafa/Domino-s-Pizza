@@ -53,9 +53,11 @@ ret_resp checkWin(tp_deck *p_hand, int p_turn); // JAFE
 //A.I.
 node_game *AIChoose_card(); // MIGUEL OK
 //In-game funcionts
-void introduction();
 void passTurn(int *p_turn); // Gabriel
 ret_resp choosGameType(); // Gabriel
+//Interface
+void introduction(); [4|3] [*4 2*] // Jander
+void gameplay();
 //Game JANDER
 int game(); //*/
 //ESTE COMENTARIO é um teste para o branches

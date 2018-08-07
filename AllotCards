@@ -11,8 +11,8 @@ ret_resp AllotCards(tp_deck *baralho, tp_hand *p1, tp_hand *p2) {	// Preenche a 
 				
 				pop(&baralho, &r_L[i], &r_R[i]); // Retira as fichas do deck
 			
-					x[i] = r_L[i]; // Associa o valor esquerdo da ficha ao vetor "x[i]";
-					y[i] = r_R[i]; // Associa o valor direito da ficha ao vetor "y[i]";
+					x[i] = r_L[i]; // Associa o valor esquerdo da ficha ao vetor "x[]";
+					y[i] = r_R[i]; // Associa o valor direito da ficha ao vetor "y[]";
 			
 				listad_insere_peca(&p1, x[i], y[i]); // Insere as fichas na mão do jogador.
 				

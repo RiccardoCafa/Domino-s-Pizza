@@ -1,0 +1,22 @@
+ret_resp AllotCards(tp_deck *baralho, tp_hand *p1, tp_hand *p2) {
+	
+	int i;
+	tp_item x[i];
+	tp_item y[i];
+	
+		if (stack_empyt(baralho)) {
+			return 0;
+		} else {
+			for (i=1; i<=7; i++) {
+				pop(&baralho, &r_L[i], &r_R[i]);
+			
+			x[i] = r_L[i];
+			y[i] = r_R[i];
+			
+			listad_insere_peca(&p1, x[i], y[i]);
+			listad_insere_peca(&p2, x[i], y[i]);
+
+				return 1;
+			} 
+		}
+}

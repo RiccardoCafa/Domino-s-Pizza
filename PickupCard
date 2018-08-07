@@ -1,5 +1,5 @@
-ret_resp pickupCard(tp_deck *deck_stack, tp_hand *p_hand) {
-	//Pega uma peça do deck;
+ret_resp pickupCard(tp_deck *deck_stack, tp_hand *p_hand) {	//Pega uma peça do deck;
+	
 	if (stack_empyt(deck_stack)){	//Verifica se o deck estah vazio;
 		return 0;	// Retorna '0' se for verdadeiro;
 	} else { 	// Caso seja falso, continua;

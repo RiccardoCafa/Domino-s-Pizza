@@ -2,9 +2,9 @@
 #define INTERFACE_LIB_H
 //Interface
 void passTurn(int *p_turn); // Gabriel
-ret_resp choosGameType(); // Gabriel
+ret_resp chooseGameType(); // Gabriel
 void introduction(); // OK IMPLEMENTAR
-
+//
 introduction () {
 	setlocale(LC_ALL, "portuguese");
 	int opcao_menu, sobre;

@@ -47,7 +47,7 @@ ret_resp AllotCards(tp_deck *baralho, tp_hand **p1, tp_hand **p2) {	// Preenche 
 		return 1;
 	}
 }
-/*REVER
+/*REVER ESTE CODIGO
 ret_resp checkWin(tp_deck *p_hand, int p_turn){ // JAFE
 	
 	if( (listade_vazia (p_hand)) && (stack_empyt(tp_deck)) ){ 	// Ver se o jogador ainda tem cartas 

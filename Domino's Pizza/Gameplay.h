@@ -27,25 +27,34 @@ ret_resp shuffle_cards(tp_deck *deck_to_shuffle)/*criar e embaralhar o deck*/ {
 }
 
 
-ret_resp AllotCards(tp_deck *baralho, tp_hand **p1, tp_hand **p2) {	// Preenche a m�o do jogador com as fichas;
+ret_resp AllotCards(tp_deck *baralho, tp_hand **p1, tp_hand **p2) {	// Preenche a mão do jogador com as fichas;
  
 	int i;
 	tp_item x;
 	tp_item y;
 		
-	if (stack_empty(baralho)) { // Verifica se o deck est� vazio;
+	if (stack_empty(baralho)) { // Verifica se o deck está vazio;
 		return 0;
 	} else {
-		for (i=0; i<7; i++) {	//Loop para add 7 fichas na m�o do jogador;
+		for (i=0; i<7; i++) {	//Loop para add 7 fichas na mão do jogador;
 			
 			pop(baralho, &x, &y); // Retira as fichas do deck
-			listad_insere_peca(p1, x, y); // Insere as fichas na mão do jogador p1.
+			listad_insere_peca(p1, x, y); // Insere as fichas na mÃ£o do jogador p1.
 			
 			pop(baralho, &x, &y); 
-			listad_insere_peca(p2, x, y); // Insere as fichas na mão do jogador p2.
+			listad_insere_peca(p2, x, y); // Insere as fichas na mÃ£o do jogador p2.
 		} 
 		return 1;
 	}
 }
-
+/*REVER
+ret_resp checkWin(tp_deck *p_hand, int p_turn){ // JAFE
+	
+	if( (listade_vazia (p_hand)) && (stack_empyt(tp_deck)) ){ 	// Ver se o jogador ainda tem cartas 
+		return 1;
+	}else{
+		return 0; // Dizendo que ainda tem carta 	
+	}
+}
+*/
 #endif

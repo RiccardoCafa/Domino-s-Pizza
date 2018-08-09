@@ -11,7 +11,7 @@ int main() {
 	tp_hand *p1;
 	tp_hand *p2;
 	tp_hand *aux;
-	
+	introduction();
 	p1 = inicializa_listad();
 	p2 = inicializa_listad();
 	jogo = inicializa_listade();
@@ -23,10 +23,10 @@ int main() {
 	AllotCards(&baralho, &p1, &p2);
 	printf("Mao jogador p1: \n");
 	listad_imprime(&p1);
-	tecla_continuar();
+	//tecla_continuar();
 	printf("Mao jogador p2: \n");
 	listad_imprime(&p2);
-	tecla_continuar();
+	//tecla_continuar();
 	insere_lista_no_fim(jogo, 1, 2);
 	insere_lista_no_fim(jogo, 2, 3);
 	insere_lista_no_inicio(jogo, 4, 7);

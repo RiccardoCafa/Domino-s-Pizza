@@ -12,9 +12,15 @@ tp_hand *AIChoose_card(tp_hand *AI_hand, tp_jogada *jogo) /*verificar a mao do I
 	tp_no *jg2;
 	jg1 = jogo->ini;
 	jg2 = jogo->fim;
+	x = y = NULL;
 	if(jg1 == NULL || jg2 == NULL) return NULL;
 	x = listad_search_for(&AI_hand, jg1->v_L, jg1->v_R);
+	/*printf("v_R jg1 %d\n", jg1->v_R);
+	printf("v_L jg1 %d\n", jg1->v_L);
+	printf("v_R jg2 %d\n", jg2->v_R);
+	printf("v_L jg2 %d\n", jg2->v_L);*/
 	y = listad_search_for(&AI_hand, jg2->v_L, jg2->v_R);
+	
 	if(x != NULL){		
 		return x;/*se conseguiu achar no ini*/
 	} else if(y != NULL){

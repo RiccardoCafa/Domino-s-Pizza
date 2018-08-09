@@ -21,7 +21,7 @@ introduction () {
 	
 	switch (opcao_menu){
 		case 1:
-			//Entrada do jogo
+			//Inicializa o game;
 		break;
 		case 2:
 			system("cls");
@@ -36,13 +36,18 @@ introduction () {
 					break;
 				case 2:
 					system("cls");
-				printf("Obrigado e volte sempre");
-				return;
+					printf("Obrigado e volte sempre");
+					system("exit");
+					return;
+					break;
 			}
+			break;
 		case 3:
 			system("cls");
 			printf("Obrigado e volte sempre.");
+			system("exit");
 			return;
+			break;
 		default:
 			return main();
 		}

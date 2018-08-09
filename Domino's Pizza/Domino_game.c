@@ -4,36 +4,43 @@
 #include <conio.h>
 #include "Domino_lib.h"
 
-
 int main() {
-	tp_deck baralho;
-	tp_jogada *jogo;
+	// Declarar as variáveis
+	tp_deck montinho;
 	tp_hand *p1;
 	tp_hand *p2;
-	tp_hand *aux;
+	tp_hand *atu;
+	tp_jogada *jogo;
+	ret_resp turno;
 	
 	p1 = inicializa_listad();
 	p2 = inicializa_listad();
 	jogo = inicializa_listade();
 	
-	shuffle_cards(&baralho);
-	printf("Baralho:\n");
-	print_stack(baralho);
-	tecla_continuar();
-	AllotCards(&baralho, &p1, &p2);
-	printf("Mao jogador p1: \n");
-	listad_imprime(&p1);
-	tecla_continuar();
-	printf("Mao jogador p2: \n");
-	listad_imprime(&p2);
-	tecla_continuar();
-	insere_lista_no_fim(jogo, 1, 2);
-	insere_lista_no_fim(jogo, 2, 3);
-	insere_lista_no_inicio(jogo, 4, 7);
-	aux = AIChoose_card(p1, jogo);
-	if(aux == NULL) printf("-1");
-	else printf("-2");
+	game_logic();
+	
+	
 	return 0;
+	
+}
+
+//Game
+game_logic() {
+
+	shuffle_cards(&montinho); // Embaralha o montinho 
+	AllotCards(&montinho, &p1, &p2); // Distribui as peças
+	firstPlay(p1, p2, &atu, &turno); // Verificar se a peça 1|1 existir, caso não encontrar pula +1 
+	// Verificar de quem é o turno
+	ShowGameplay(p1, p2, jogo, turno);// **mostra interface 
+	while(checkWin(atu, turno)) { // Verifica quem ganhou
+		player_choose(atu);// Perguntar qual é a carta
+		// Jogar carta caso seja possivel, se n pesque
+		passTurn(&turno);// Passa o turno
+		// Esconder os valores
+		// Aperte para continuar
+		// Mostre o proximo jogador
+		ShowGameplay(p1, p2, jogo, turno);
+	}// Até alguem ganhar ai finaliza a rodada
 }
 
 void tecla_continuar() {

@@ -59,7 +59,4 @@ typedef tp_stack tp_deck; // declara uma struct da biblioteca Stack
 //In-Game funcionts
 void passTurn(int *p_turn); 
 
-//Game
-void game_logic();
-
 #endif

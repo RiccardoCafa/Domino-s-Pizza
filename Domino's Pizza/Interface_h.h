@@ -4,6 +4,7 @@
 void passTurn(int *p_turn); // Gabriel
 ret_resp chooseGameType(); // Gabriel
 void introduction(); // OK IMPLEMENTAR
+void ShowGameplay(tp_hand *p1, tp_hand *p2, tp_jogada *jogo, ret_resp turno);
 //
 introduction () {
 	setlocale(LC_ALL, "portuguese");
@@ -21,7 +22,7 @@ introduction () {
 	
 	switch (opcao_menu){
 		case 1:
-			//Entrada do jogo
+			//Inicializa o game;
 		break;
 		case 2:
 			system("cls");
@@ -36,13 +37,18 @@ introduction () {
 					break;
 				case 2:
 					system("cls");
-				printf("Obrigado e volte sempre");
-				return;
+					printf("Obrigado e volte sempre");
+					system("exit");
+					return;
+					break;
 			}
+			break;
 		case 3:
 			system("cls");
 			printf("Obrigado e volte sempre.");
+			system("exit");
 			return;
+			break;
 		default:
 			return main();
 		}

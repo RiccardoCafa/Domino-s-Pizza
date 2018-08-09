@@ -15,10 +15,6 @@ tp_hand *AIChoose_card(tp_hand *AI_hand, tp_jogada *jogo) /*verificar a mao do I
 	x = y = NULL;
 	if(jg1 == NULL || jg2 == NULL) return NULL;
 	x = listad_search_for(&AI_hand, jg1->v_L, jg1->v_R);
-	/*printf("v_R jg1 %d\n", jg1->v_R);
-	printf("v_L jg1 %d\n", jg1->v_L);
-	printf("v_R jg2 %d\n", jg2->v_R);
-	printf("v_L jg2 %d\n", jg2->v_L);*/
 	y = listad_search_for(&AI_hand, jg2->v_L, jg2->v_R);
 	
 	if(x != NULL){		

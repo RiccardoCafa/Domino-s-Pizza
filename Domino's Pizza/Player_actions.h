@@ -3,6 +3,7 @@
 //Player functions
 ret_resp play_card(tp_hand *p_hand, tp_jogada *jogo); // JAFE
 ret_resp pickupCard(tp_deck *deck_stack, tp_hand *p_hand); // OK (TESTE)
+tp_hand player_choose(tp_hand *player); // Ask which piece he wants to play or if he wants to get from stack
 
 ret_resp pickupCard(tp_deck *deck_stack, tp_hand *p_hand) {	//Pega uma peça do deck;
 	int r_L, r_R;

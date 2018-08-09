@@ -5,6 +5,11 @@
 ret_resp AllotCards(tp_deck *baralho, tp_hand **p1, tp_hand **p2); // OK
 ret_resp shuffle_cards(tp_deck *deck_to_shuffle); // OK
 ret_resp checkWin(tp_deck *p_hand, int p_turn); // JAFE
+ret_resp firstPlay(tp_hand *p1, tp_hand *p2, tp_hand **atu, ret_resp *turn);
+
+ret_resp firstPlay(tp_hand *p1, tp_hand *p2, tp_hand **atu, ret_resp *turn) {
+	return 1;
+}
 
 ret_resp shuffle_cards(tp_deck *deck_to_shuffle)/*criar e embaralhar o deck*/ {
 	int x,y,tamanhopilha = 0;
@@ -48,12 +53,12 @@ ret_resp AllotCards(tp_deck *baralho, tp_hand **p1, tp_hand **p2) {	// Preenche 
 	}
 }
 /*REVER ESTE CODIGO
-ret_resp checkWin(tp_deck *p_hand, int p_turn){ // JAFE
+ret_resp checkWin(tp_hand *p_hand, tp_deck *baralho){ // JAFE
 	
-	if( (listade_vazia (p_hand)) && (stack_empyt(tp_deck)) ){ 	// Ver se o jogador ainda tem cartas 
+	if( (listade_vazia (p_hand)) && (stack_empyt(tp_deck)) ){ 	// Ver se o jogador ainda tem cartas
 		return 1;
 	}else{
-		return 0; // Dizendo que ainda tem carta 	
+		return 0; // Dizendo que ainda tem carta
 	}
 }
 */

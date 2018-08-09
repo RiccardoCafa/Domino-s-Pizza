@@ -4,6 +4,7 @@
 void passTurn(int *p_turn); // Gabriel
 ret_resp chooseGameType(); // Gabriel
 void introduction(); // OK IMPLEMENTAR
+void ShowGameplay(tp_hand *p1, tp_hand *p2, tp_jogada *jogo, ret_resp turno);
 //
 introduction () {
 	setlocale(LC_ALL, "portuguese");

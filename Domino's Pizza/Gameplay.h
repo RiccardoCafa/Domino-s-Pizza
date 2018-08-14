@@ -2,16 +2,16 @@
 #define GAMEPLAY_LIB
 
 //Gameplay
-ret_resp AllotCards(tp_deck *baralho, tp_hand **p1, tp_hand **p2); // OK
-ret_resp shuffle_cards(tp_deck *deck_to_shuffle); // OK
-ret_resp checkWin(tp_deck *p_hand, int p_turn); // JAFE
-ret_resp firstPlay(tp_hand *p1, tp_hand *p2, tp_hand **atu, ret_resp *turn);
+int AllotCards(tp_deck *baralho, tp_hand **p1, tp_hand **p2); // OK
+int shuffle_cards(tp_deck *deck_to_shuffle); // OK
+int checkWin(tp_deck *p_hand, int p_turn); // JAFE
+int firstPlay(tp_hand *p1, tp_hand *p2, tp_hand **atu, ret_resp *turn);
 
-ret_resp firstPlay(tp_hand *p1, tp_hand *p2, tp_hand **atu, ret_resp *turn) {
+int firstPlay(tp_hand *p1, tp_hand *p2, tp_hand **atu, ret_resp *turn) {
 	return 1;
 }
 
-ret_resp shuffle_cards(tp_deck *deck_to_shuffle)/*criar e embaralhar o deck*/ {
+int shuffle_cards(tp_deck *deck_to_shuffle)/*criar e embaralhar o deck*/ {
 	int x,y,tamanhopilha = 0;
 	/*inicializou*/
 	start_stack(deck_to_shuffle);
@@ -32,7 +32,7 @@ ret_resp shuffle_cards(tp_deck *deck_to_shuffle)/*criar e embaralhar o deck*/ {
 }
 
 
-ret_resp AllotCards(tp_deck *baralho, tp_hand **p1, tp_hand **p2) {	// Preenche a mão do jogador com as fichas;
+int AllotCards(tp_deck *baralho, tp_hand **p1, tp_hand **p2) {	// Preenche a mão do jogador com as fichas;
  
 	int i;
 	tp_item x;
@@ -52,14 +52,30 @@ ret_resp AllotCards(tp_deck *baralho, tp_hand **p1, tp_hand **p2) {	// Preenche 
 		return 1;
 	}
 }
-/*REVER ESTE CODIGO
-ret_resp checkWin(tp_hand *p_hand, tp_deck *baralho){ // JAFE
-	
-	if( (listade_vazia (p_hand)) && (stack_empyt(tp_deck)) ){ 	// Ver se o jogador ainda tem cartas
+
+int checkWin(tp_hand *p1, tp_hand *p2, tp_jogada *jogo ,tp_deck *baralho){ // JAFE
+	if(!stack_empty(baralho)) return 0;
+	if(listad_vazia(p1)) {
 		return 1;
-	}else{
-		return 0; // Dizendo que ainda tem carta
+	} else if(listad_vazia(p2)) {
+		return 2;
+	} else {
+		int count = 0;
+		int valor_r, valor_l;
+		valor_r = jogo->fim->v_R;
+		valor_l = jogo->fim->v_L;
+		if(listad_search_for(&p1, valor_l, valor_r) != NULL) return 0;
+		if(listad_search_for(&p2, valor_l, valor_r) != NULL) return 0;
+		valor_r = jogo->ini->v_R;
+		valor_l = jogo->ini->v_L;
+		if(listad_search_for(&p1, valor_l, valor_r) != NULL) return 0;
+		if(listad_search_for(&p2, valor_l, valor_r) != NULL) return 0;
+		if(listad_soma(&p1) > listad_soma(&p2)) {
+			return 1;
+		} else {
+			return 2;
+		}
 	}
 }
-*/
+
 #endif

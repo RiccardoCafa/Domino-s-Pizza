@@ -25,6 +25,17 @@ int listad_vazia(tp_listad *l) {
 	else return 0;
 }
 
+tp_listad *listad_peca_pos(tp_listad *fil, int pos) {
+	int tmp = 0;
+	tp_listad *aux = fil;
+	while(tmp != pos) {
+		if(aux->next == NULL) return NULL;
+		aux = aux->next;
+		tmp++;
+	}
+	return aux;
+}
+
 tp_listad *listad_search_for(tp_listad **fil, tp_peca L, tp_peca R) {
 	// Retorna o endereço onde se encontra o valor de e
 	// Retorna null caso ele não encontre nada
@@ -106,5 +117,18 @@ void listad_imprime(tp_listad **fil){
 	}
 	printf("\n");
 }
+
+int listad_soma(tp_listad **fil){
+	tp_listad *aux;
+	int soma = 0;
+	aux = *fil;
+	while(aux != NULL) {
+		soma += aux->p_L;
+		soma += aux->p_R;
+		aux = aux->next;
+	}
+	return soma;
+}
+
 
 #endif

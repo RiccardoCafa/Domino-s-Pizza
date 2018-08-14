@@ -24,24 +24,7 @@ int main() {
 	
 }
 
-//Game
-game_logic() {
 
-	shuffle_cards(&montinho); // Embaralha o montinho 
-	AllotCards(&montinho, &p1, &p2); // Distribui as peças
-	firstPlay(p1, p2, &atu, &turno); // Verificar se a peça 1|1 existir, caso não encontrar pula +1 
-	// Verificar de quem é o turno
-	ShowGameplay(p1, p2, jogo, turno);// **mostra interface 
-	while(checkWin(atu, turno)) { // Verifica quem ganhou
-		player_choose(atu);// Perguntar qual é a carta
-		// Jogar carta caso seja possivel, se n pesque
-		passTurn(&turno);// Passa o turno
-		// Esconder os valores
-		// Aperte para continuar
-		// Mostre o proximo jogador
-		ShowGameplay(p1, p2, jogo, turno);
-	}// Até alguem ganhar ai finaliza a rodada
-}
 
 void tecla_continuar() {
 	printf("\nPression qualquer tecla para continuar...\n");

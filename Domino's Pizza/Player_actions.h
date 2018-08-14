@@ -21,7 +21,16 @@ ret_resp pickupCard(tp_deck *deck_stack, tp_hand *p_hand) {	//Pega uma peça do 
 }
 
 
-ret_resp play_card(tp_hand *p_hand, tp_jogada *jogo) {
+ret_resp play_card(tp_hand *p_hand, tp_jogada *jogo, int posicao, int inioufim) {
+	tp_hand *aux;
+	aux = listad_peca_pos(&p_hand, posicao);
+	if(aux == NULL) return 0;
+	if(inioufim == 1) {	
+		insere_lista_no_inicio(jogo, aux->p_L, aux->p_R);
+	} else {
+		insere_lista_no_fim(jogo, aux->p_L, aux->p_R);
+	}
+	listad_remove_peca(&p_hand, aux);
 	return 1;
 }
 

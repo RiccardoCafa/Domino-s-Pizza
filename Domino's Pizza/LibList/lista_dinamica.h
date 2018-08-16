@@ -118,7 +118,7 @@ void listad_imprime(tp_listad **fil){
 	printf("\n");
 }
 
-int listad_soma(tp_listad **fil){
+int listad_soma(tp_listad **fil){ /*PRECISA SER TESTADO*/
 	tp_listad *aux;
 	int soma = 0;
 	aux = *fil;
@@ -130,5 +130,14 @@ int listad_soma(tp_listad **fil){
 	return soma;
 }
 
+int listad_size(tp_listad *fil) { /*Precisa ser testado*/
+	tp_listad *aux;
+	aux = *fil;
+	int count = 0;
+	while(aux != NULL) {
+		count++;
+		aux = aux->next;
+	}
+}
 
 #endif

@@ -7,7 +7,7 @@ int shuffle_cards(tp_deck *deck_to_shuffle); // OK
 int checkWin(tp_deck *p_hand, int p_turn); // JAFE
 int firstPlay(tp_hand *p1, tp_hand *p2, tp_hand **atu, ret_resp *turn);
 
-int firstPlay(tp_hand *p1, tp_hand *p2, tp_hand **atu, ret_resp *turn) {
+int firstPlay(tp_hand *p1, tp_hand *p2, tp_hand **atu, ret_resp *turn) { /*PRECISA SER FEITA*/
 	return 1;
 }
 

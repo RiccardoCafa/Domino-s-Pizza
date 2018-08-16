@@ -58,24 +58,4 @@ typedef tp_stack tp_deck; // declara uma struct da biblioteca Stack
 //################## DeclaraÃ§Ã£o das funÃ§Ãµes ##################
 //In-Game funcionts
 void passTurn(int *p_turn); 
-
-//Game
-game_logic() {
-
-	shuffle_cards(&montinho); // Embaralha o montinho 
-	AllotCards(&montinho, &p1, &p2); // Distribui as peças
-	firstPlay(p1, p2, &atu, &turno); // Verificar se a peça 1|1 existir, caso não encontrar pula +1 
-	// Verificar de quem é o turno
-	ShowGameplay(p1, p2, jogo, turno);// **mostra interface 
-	while(checkWin(atu, turno)) { // Verifica quem ganhou
-		player_choose(atu);// Perguntar qual é a carta
-		// Jogar carta caso seja possivel, se n pesque
-		passTurn(&turno);// Passa o turno
-		// Esconder os valores
-		// Aperte para continuar
-		// Mostre o proximo jogador
-		ShowGameplay(p1, p2, jogo, turno);
-	}// Até alguem ganhar ai finaliza a rodada
-}
-
 #endif

@@ -3,7 +3,8 @@
 //Player functions
 ret_resp play_card(tp_hand *p_hand, tp_jogada *jogo); // JAFE
 ret_resp pickupCard(tp_deck *deck_stack, tp_hand *p_hand); // OK (TESTE)
-tp_hand player_choose(tp_hand *player); // Ask which piece he wants to play or if he wants to get from stack
+tp_hand player_choose(tp_hand *player, int *posicao, int *inioufim); // Ask which piece he wants to play or if he wants to get from stack
+// MIGUEL - Perguntar a posicao e ini ou fim
 
 ret_resp pickupCard(tp_deck *deck_stack, tp_hand *p_hand) {	//Pega uma peça do deck;
 	int r_L, r_R;
@@ -22,6 +23,8 @@ ret_resp pickupCard(tp_deck *deck_stack, tp_hand *p_hand) {	//Pega uma peça do 
 
 
 ret_resp play_card(tp_hand *p_hand, tp_jogada *jogo, int posicao, int inioufim) {
+	/*PRECISA SER TESTADO
+	Verificar se a pe�a encaixa*/
 	tp_hand *aux;
 	aux = listad_peca_pos(&p_hand, posicao);
 	if(aux == NULL) return 0;

@@ -26,7 +26,7 @@ tp_hand *AIChoose_card(tp_hand *AI_hand, tp_jogada *jogo) /*verificar a mao do I
 	}	
 }
 
-ret_resp AIPlay(tp_hand *ai_hand, tp_jogada *jogo, tp_deck *baralho) {
+ret_resp AIPlay(tp_hand *ai_hand, tp_jogada *jogo, tp_deck *baralho) { /*PRECISA SER TESTADO*/
 	// Lógica
 	// Checar se tem cartas para jogar na mesa
 	// Caso haja, jogue

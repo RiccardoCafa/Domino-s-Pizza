@@ -22,7 +22,6 @@ chooseGameType(){
             default: //volta em caso de um numero diferente
             system("cls");
             printf("* Tipo nao aceito, digite novamente *\n");
-            printf(" chooseGameType();\n");
             chooseGameType();
             break;
         } // Gabriel

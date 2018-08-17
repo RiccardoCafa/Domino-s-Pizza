@@ -5,7 +5,7 @@
 void passTurn(tp_hand *p1, tp_hand *p2, tp_hand **aux, int *turno){
     if(*turno==1){  //verifica variavel turno pra ver quem estava jogando
         *aux=p2;    //transfere o proximo jogador pra funcao de mostrar a mao 
-        turno=1;
+        turno=2;
     }else { *aux=p1;
             turno=1;}
     } // Gabriel

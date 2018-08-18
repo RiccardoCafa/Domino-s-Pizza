@@ -1,8 +1,6 @@
 #ifndef AI_LIB_H
 #define AI_LIB_H
 // A.I.
-tp_hand *AIChoose_card(tp_hand *AI_hand, tp_jogada *jogo); // OK
-ret_resp AIPlay(tp_hand *ai_hand, tp_jogada *jogo, tp_deck *baralho); // RICCARDO
 
 tp_hand *AIChoose_card(tp_hand *AI_hand, tp_jogada *jogo) /*verificar a mao do IA*/ {
 	/*se ele tiver uma peca jogar*/

@@ -5,32 +5,36 @@
 void passTurn(tp_hand *p1, tp_hand *p2, tp_hand **aux, int *turno){
     if(*turno==1){  //verifica variavel turno pra ver quem estava jogando
         *aux=p2;    //transfere o proximo jogador pra funcao de mostrar a mao 
-        turno=2;
-    }else { *aux=p1;
-            turno=1;}
-    } // Gabriel
+        *turno=2;
+    }else { 
+		*aux=p1;
+        *turno=1;
+	}
+} // Gabriel
 
-chooseGameType(){
-        int tipo_jogo;
-        printf("Quantos jogadores(1 ou 2): ");
-        scanf("%d", &tipo_jogo);
-        switch(tipo_jogo){
-            case 1 : //funcao contra IA
-            break;
-            case 2 : //funcao 1v1
-            break;
-            default: //volta em caso de um numero diferente
-            system("cls");
-            printf("* Tipo nao aceito, digite novamente *\n");
-            chooseGameType();
-            break;
-        } // Gabriel
+void chooseGameType(){
+    int tipo_jogo;
+    printf("Quantos jogadores(1 ou 2): ");
+    scanf("%d", &tipo_jogo);
+    switch(tipo_jogo){
+        case 1 : //funcao contra IA
+        break;
+        case 2 : //funcao 1v1
+        break;
+        default: //volta em caso de um numero diferente
+        system("cls");
+        printf("* Tipo nao aceito, digite novamente *\n");
+        return chooseGameType();
+        break;
+    } // Gabriel
+}
 //void introduction(); // OK IMPLEMENTAR
 void ShowGameplay(tp_hand *p1, tp_hand *p2, tp_jogada *jogo, ret_resp turno);
 //
 int introduction () {
 	setlocale(LC_ALL, "portuguese");
 	int opcao_menu, sobre;
+	system("cls");
 	printf(" ___                                       _           ___                         \n");
 	printf("(  _`\\                    _               ( )         (  _`\\  _                    \n");
 	printf("| | ) |   _     ___ ___  (_)  ___     _   |/   ___    | |_) )(_) ____  ____    _ _ \n");
@@ -55,7 +59,7 @@ int introduction () {
 			switch (sobre){
 				case 1:
 					system("cls");
-					return main();
+					return introduction();
 					break;
 				case 2:
 					system("cls");
@@ -72,7 +76,7 @@ int introduction () {
 			return;
 			break;
 		default:
-			return main();
+			return introduction();
 		}
 		return 0;
 }

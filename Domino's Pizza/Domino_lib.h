@@ -55,7 +55,4 @@ typedef tp_stack tp_deck; // declara uma struct da biblioteca Stack
 #include "AI_h.h"
 #endif
 
-//################## Declaração das funções ##################
-//In-Game funcionts
-void passTurn(int *p_turn); 
 #endif

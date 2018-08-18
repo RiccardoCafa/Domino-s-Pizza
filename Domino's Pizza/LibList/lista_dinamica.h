@@ -118,10 +118,10 @@ void listad_imprime(tp_listad **fil){
 	printf("\n");
 }
 
-int listad_soma(tp_listad **fil){ /*OK*/
+int listad_soma(tp_listad *fil){ /*OK*/
 	tp_listad *aux;
 	int soma = 0;
-	aux = *fil;
+	aux = fil;
 	while(aux != NULL) {
 		soma += aux->p_L;
 		soma += aux->p_R;

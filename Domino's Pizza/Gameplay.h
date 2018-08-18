@@ -5,10 +5,32 @@
 int AllotCards(tp_deck *baralho, tp_hand **p1, tp_hand **p2); // OK
 int shuffle_cards(tp_deck *deck_to_shuffle); // OK
 int checkWin(tp_hand *p1, tp_hand *p2, tp_jogada *jogo ,tp_deck *baralho); // JAFE
-int firstPlay(tp_hand *p1, tp_hand *p2, tp_hand **atu, ret_resp *turn);
+int firstPlay(tp_hand *p1, tp_hand *p2, tp_jogada *jogo, tp_hand **atu, ret_resp *turn);
 
-int firstPlay(tp_hand *p1, tp_hand *p2, tp_hand **atu, ret_resp *turn) { /*PRECISA SER FEITA*/
-	return 1;
+int firstPlay(tp_hand *p1, tp_hand *p2, tp_jogada *jogo, tp_hand **atu, ret_resp *turn) { /*PRECISA SER FEITA*/
+	int i = 0;
+	tp_hand *aux;
+	for(i = 6; i >= 0; i--) {
+		aux = listad_search_for_dif(&p1, i, i);
+		if(aux != NULL) {
+			*turn = 2;
+			*atu = p2;
+			insere_lista_no_fim(jogo, i, i);
+			listad_remove_peca(&p1, aux);
+			return 1;
+		}
+		aux = listad_search_for_dif(&p2, i, i);
+		if(aux != NULL) {
+			*turn = 1;
+			*atu = p1;
+			insere_lista_no_fim(jogo, i, i);
+			listad_remove_peca(&p2, aux);
+			return 1;
+		}
+	}
+	printf("Ocorreu um erro (002)...\nPor favor, nos informe pelo GitHub o ocorrido -\n");
+	printf("https://github.com/RiccardoCafa/Domino-s-Pizza\nMuito Obrigado!\n");
+	return 0;
 }
 
 int shuffle_cards(tp_deck *deck_to_shuffle)/*criar e embaralhar o deck*/ {
@@ -62,10 +84,10 @@ int checkWin(tp_hand *p1, tp_hand *p2, tp_jogada *jogo ,tp_deck *baralho){ // JA
 	} else {
 		int count = 0;
 		int valor_r, valor_l;
-		valor_r = jogo->fim->v_R;
-		valor_l = jogo->fim->v_L;
-		if(listad_search_for(&p1, valor_l, valor_r) != NULL) return 0;
-		if(listad_search_for(&p2, valor_l, valor_r) != NULL) return 0;
+		//valor_r = jogo->fim->v_R;
+		//valor_l = jogo->fim->v_L;
+		if(listad_search_for(&p1, jogo->fim->v_L, jogo->fim->v_R) != NULL) return 0;
+		if(listad_search_for(&p2, jogo->fim->v_L, jogo->fim->v_R) != NULL) return 0;
 		valor_r = jogo->ini->v_R;
 		valor_l = jogo->ini->v_L;
 		if(listad_search_for(&p1, valor_l, valor_r) != NULL) return 0;

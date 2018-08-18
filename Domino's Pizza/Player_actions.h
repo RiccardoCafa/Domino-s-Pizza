@@ -1,10 +1,9 @@
 #ifndef PLAYER_LIB_H
 #define PLAYER_LIB_H
 //Player functions
-ret_resp play_card(tp_hand *p_hand, tp_jogada *jogo); // JAFE
+ret_resp play_card(tp_hand *p_hand, tp_jogada *jogo, int posicao, int inioufim); // JAFE
 ret_resp pickupCard(tp_deck *deck_stack, tp_hand *p_hand); // OK (TESTE)
-tp_hand player_choose(tp_hand *player, int *posicao, int *inioufim); // Ask which piece he wants to play or if he wants to get from stack
-// MIGUEL - Perguntar a posicao e ini ou fim
+void player_choose(tp_hand *player, tp_deck *baralho, tp_jogada *jogo); // Ask which piece he wants to play or if he wants to get from stack
 
 ret_resp pickupCard(tp_deck *deck_stack, tp_hand *p_hand) {	//Pega uma peÃ§a do deck;
 	int r_L, r_R;
@@ -24,17 +23,77 @@ ret_resp pickupCard(tp_deck *deck_stack, tp_hand *p_hand) {	//Pega uma peÃ§a do 
 
 ret_resp play_card(tp_hand *p_hand, tp_jogada *jogo, int posicao, int inioufim) {
 	/*PRECISA SER TESTADO
-	Verificar se a peça encaixa*/
+	  Verificar se a peça encaixa*/
 	tp_hand *aux;
-	aux = listad_peca_pos(&p_hand, posicao);
+	aux = listad_peca_pos(p_hand, posicao);
 	if(aux == NULL) return 0;
 	if(inioufim == 1) {	
-		insere_lista_no_inicio(jogo, aux->p_L, aux->p_R);
+		if(jogo->ini->v_L == aux->p_L) {
+			insere_lista_no_inicio(jogo, aux->p_R, aux->p_L);
+			printf("INSERIDO\n");	
+		} else if(jogo->ini->v_L == aux->p_R) {
+			insere_lista_no_inicio(jogo, aux->p_L, aux->p_R);
+			printf("INSERIDO\n");
+		} else {
+			return 0;
+		}
+	} else if(inioufim == 2){
+		if(jogo->fim->v_R == aux->p_L) {
+			insere_lista_no_fim(jogo, aux->p_L, aux->p_R);
+			printf("INSERIDO\n");
+		} else if(jogo->fim->v_R == aux->p_R) {
+			insere_lista_no_fim(jogo, aux->p_R, aux->p_L);	
+			printf("INSERIDO\n");
+		} else {
+			return 0;
+		}
 	} else {
-		insere_lista_no_fim(jogo, aux->p_L, aux->p_R);
+		printf("Posicao invalida\n");
 	}
 	listad_remove_peca(&p_hand, aux);
 	return 1;
+}
+
+void player_choose(tp_hand *player, tp_deck *baralho, tp_jogada *jogo) {
+	int certo = 0;
+	int esc, iof, exist;
+	tp_hand *aux;
+	aux = player;
+	while (certo == 0) {
+		printf("Que operacao deseja realizar?\n1 - Jogar peca\n2 - Cava\n");
+		scanf("%d", &esc);
+		if(esc == 2) {
+			pickupCard(baralho, player);
+			return;
+		} else if(esc == 1) {
+			printf("Escolha de 0 a %d qual peca deseja jogar na mesa...\n", listad_size(player) - 1);
+			scanf("%d", &esc);
+			if(esc < 0 || esc > listad_size(player) - 1) {
+				printf("Peca escolhida nao existe!\n");
+				continue;
+			}
+			printf("Deseja jogar no inicio ou no fim?\n1 - inicio\n2 - fim\n");
+			scanf("%d", &iof);
+			aux = listad_peca_pos(aux, esc);
+			if(aux == NULL) {
+				printf("Ocorreu um erro ao selecionar essa peca...\nPor favor, nos informe pelo GitHub o ocorrido -\n");
+				printf("https://github.com/RiccardoCafa/Domino-s-Pizza\nMuito Obrigado!\n");
+				break;
+			} else {
+				exist = play_card(player, jogo, esc, iof);
+				if(exist == 0) {
+					printf("Peca nao inserida\n");
+				} else if(exist == 1) {
+					printf("Peca inserida\n");
+					certo = 1;
+					return;
+				}
+			}
+		} else {
+			continue;
+		}
+		
+	}
 }
 
 #endif

@@ -27,23 +27,27 @@ ret_resp play_card(tp_hand *p_hand, tp_jogada *jogo, int posicao, int inioufim) 
 	if(inioufim == 1) {	
 		if(jogo->ini->v_L == aux->p_L) {
 			insere_lista_no_inicio(jogo, aux->p_R, aux->p_L);
+			listad_remove_peca(&p_hand, aux);
 		} else if(jogo->ini->v_L == aux->p_R) {
 			insere_lista_no_inicio(jogo, aux->p_L, aux->p_R);
+			listad_remove_peca(&p_hand, aux);
 		} else {
 			return 0;
 		}
 	} else if(inioufim == 2){
 		if(jogo->fim->v_R == aux->p_L) {
 			insere_lista_no_fim(jogo, aux->p_L, aux->p_R);
+			listad_remove_peca(&p_hand, aux);
 		} else if(jogo->fim->v_R == aux->p_R) {
 			insere_lista_no_fim(jogo, aux->p_R, aux->p_L);
+			listad_remove_peca(&p_hand, aux);
 		} else {
 			return 0;
 		}
 	} else {
 		printf("Posicao invalida\n");
 	}
-	listad_remove_peca(&p_hand, aux);
+	
 	return 1;
 }
 
@@ -60,7 +64,7 @@ void player_choose(tp_hand *player, tp_deck *baralho, tp_jogada *jogo) {
 		if(esc == 2) {
 			pickupCard(baralho, player);
 			printf("Mao do jogador: \n");
-			listad_imprime(&player);
+			listad_imprime(player);
 			return;
 		} else if(esc == 1) {
 			printf("Escolha de 0 a %d qual peca deseja jogar na mesa...\n", listad_size(player) - 1);
@@ -73,11 +77,11 @@ void player_choose(tp_hand *player, tp_deck *baralho, tp_jogada *jogo) {
 			printf("Deseja jogar no inicio ou no fim?\n1 - inicio\n2 - fim\n");
 			fflush(stdin);
 			scanf("%d", &iof);
-			aux = listad_peca_pos(aux, esc);
+			aux = listad_peca_pos(player, esc);
 			if(aux == NULL) {
-				printf("Ocorreu um erro (001)...\nPor favor, nos informe pelo GitHub o ocorrido -\n");
-				printf("https://github.com/RiccardoCafa/Domino-s-Pizza\nMuito Obrigado!\n");
-				break;
+				//printf("Ocorreu um erro (001)...\nPor favor, nos informe pelo GitHub o ocorrido -\n");
+				//printf("https://github.com/RiccardoCafa/Domino-s-Pizza\nMuito Obrigado!\n");
+				continue;
 			} else {
 				exist = play_card(player, jogo, esc, iof);
 				if(exist == 0) {

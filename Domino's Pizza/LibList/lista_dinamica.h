@@ -28,6 +28,7 @@ int listad_vazia(tp_listad *l) {
 tp_listad *listad_peca_pos(tp_listad *fil, int pos) {
 	int tmp = 0;
 	tp_listad *aux = fil;
+	if(pos >= listad_size(fil)) return NULL;
 	while(tmp != pos) {
 		if(aux == NULL) return NULL;
 		aux = aux->next;
@@ -108,9 +109,9 @@ int listad_remove_peca(tp_listad **fil, tp_listad *endereco_peca) {
 	return 1;
 }
 
-void listad_imprime(tp_listad **fil){
+void listad_imprime(tp_listad *fil){
 	tp_listad *aux;
-	aux = *fil;
+	aux = fil;
 	while(aux != NULL) {
 		printf("[%d|%d]\t", aux->p_L, aux->p_R);
 		aux = aux->next;

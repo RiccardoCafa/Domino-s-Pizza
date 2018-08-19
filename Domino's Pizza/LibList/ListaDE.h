@@ -71,14 +71,14 @@ void imprime_listad(tp_listade *lista, int ordem) {
 	switch(ordem) {
 		case 1: atu = lista->ini;
 		while(atu != NULL) {
-			printf("%d|%d\t", atu->v_L, atu->v_R);
+			printf("[%d|%d] ", atu->v_L, atu->v_R);
 			atu=atu->prox;
 		}
 		printf("\n");
 		break;
 		case 2: atu = lista->fim;
 		while(atu != NULL) {
-			printf("%d|%d\t", atu->v_L, atu->v_R);
+			printf("[%d|%d] ", atu->v_L, atu->v_R);
 			atu = atu->ant;
 		}
 		break;
@@ -126,6 +126,15 @@ tp_no *busca_listad(tp_listade *lista, tp_item r_L, tp_item r_R) {
 		atu = atu->prox;
 	}
 	return atu;
+}
+
+tp_no *busca_listad_no_dif(tp_listade *lista, tp_item r_L, tp_item r_R) {
+	tp_no *aux;
+	aux = lista->ini;
+	while((aux != NULL) && ((aux->v_L == r_L || aux->v_L == r_R) && ((aux->v_R == r_L || aux->v_R == r_R)))) {
+		aux = aux->prox;
+	}
+	return aux;
 }
 
 #endif

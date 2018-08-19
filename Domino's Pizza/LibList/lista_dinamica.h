@@ -28,11 +28,13 @@ int listad_vazia(tp_listad *l) {
 tp_listad *listad_peca_pos(tp_listad *fil, int pos) {
 	int tmp = 0;
 	tp_listad *aux = fil;
+	if(pos >= listad_size(fil)) return NULL;
 	while(tmp != pos) {
-		if(aux->next == NULL) return NULL;
+		if(aux == NULL) return NULL;
 		aux = aux->next;
 		tmp++;
 	}
+	if(aux == NULL) return NULL;
 	return aux;
 }
 
@@ -89,7 +91,7 @@ int listad_remove_peca(tp_listad **fil, tp_listad *endereco_peca) {
 	ant = NULL;
 	atu = *fil;
 	if(endereco_peca == NULL) return 0;
-	while(atu->next != NULL && atu != endereco_peca) {
+	while(atu != NULL && atu != endereco_peca) {
 		ant = atu;
 		atu = atu->next;
 	}
@@ -108,20 +110,20 @@ int listad_remove_peca(tp_listad **fil, tp_listad *endereco_peca) {
 	return 1;
 }
 
-void listad_imprime(tp_listad **fil){
+void listadin_imprime(tp_listad *fil){
 	tp_listad *aux;
-	aux = *fil;
+	aux = fil;
 	while(aux != NULL) {
-		printf("%d|%d\t", aux->p_L, aux->p_R);
+		printf("[%d|%d]\t", aux->p_L, aux->p_R);
 		aux = aux->next;
 	}
 	printf("\n");
 }
 
-int listad_soma(tp_listad **fil){ /*PRECISA SER TESTADO*/
+int listad_soma(tp_listad *fil){ /*OK*/
 	tp_listad *aux;
 	int soma = 0;
-	aux = *fil;
+	aux = fil;
 	while(aux != NULL) {
 		soma += aux->p_L;
 		soma += aux->p_R;
@@ -130,14 +132,15 @@ int listad_soma(tp_listad **fil){ /*PRECISA SER TESTADO*/
 	return soma;
 }
 
-int listad_size(tp_listad *fil) { /*Precisa ser testado*/
+int listad_size(tp_listad *fil) { /*OK*/
 	tp_listad *aux;
-	aux = *fil;
+	aux = fil;
 	int count = 0;
 	while(aux != NULL) {
 		count++;
 		aux = aux->next;
 	}
+	return count;
 }
 
 #endif

@@ -4,10 +4,10 @@
 
 void passTurn(tp_hand *p1, tp_hand *p2, tp_hand **aux, int *turno){
     if(*turno==1){  //verifica variavel turno pra ver quem estava jogando
-        *aux=p2;    //transfere o proximo jogador pra funcao de mostrar a mao 
+        //*aux=p2;    //transfere o proximo jogador pra funcao de mostrar a mao 
         *turno=2;
     }else { 
-		*aux=p1;
+		//*aux=p1;
         *turno=1;
 	}
 } // Gabriel
@@ -29,7 +29,6 @@ void chooseGameType(){
     } // Gabriel
 }
 //void introduction(); // OK IMPLEMENTAR
-void ShowGameplay(tp_hand *p1, tp_hand *p2, tp_jogada *jogo, ret_resp turno);
 //
 int introduction () {
 	setlocale(LC_ALL, "portuguese");

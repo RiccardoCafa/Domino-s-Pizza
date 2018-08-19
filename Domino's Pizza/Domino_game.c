@@ -34,29 +34,29 @@ int main() {
 	  //ShowGameplay(p1, p2, jogo, turno);// **mostra interface
 
 	while(WhoWins == 0) { // Verifica quem ganhou
-	if(turno == 1) {
-		printf("Mesa:\n");
-		imprime_listad(jogo, 1);
-		printf("Mao do jogador %d\n", turno);
-		listad_imprime(p1);
-		player_choose(p1, &baralho, jogo);// Perguntar o que o jogador deseja fazer
-		// Jogar carta caso seja possivel, se n pesque
-		printf("Mesa:\n");
-		imprime_listad(jogo, 1); // Imprime a jogada antes de sair
-		tecla_continuar();// Aperte para continuar
-		passTurn(p1, p2, &atu, &turno); // Passa o turno
-	} else if(turno == 2) {
-		printf("Mesa:\n");
-		imprime_listad(jogo, 1);
-		printf("Mao do jogador %d\n", turno);
-		listad_imprime(p2);
-		player_choose(p2, &baralho, jogo);// Perguntar o que o jogador deseja fazer
-		// Jogar carta caso seja possivel, se n pesque
-		printf("Mesa:\n");
-		imprime_listad(jogo, 1); // Imprime a jogada antes de sair
-		tecla_continuar();// Aperte para continuar
-		passTurn(p1, p2, &atu, &turno); // Passa o turno
-	}
+		if(turno == 1) {
+			printf("Mesa:\n");
+			imprime_listad(jogo, 1);
+			printf("Mao do jogador %d\n", turno);
+			listadin_imprime(p1);
+			player_choose(p1, &baralho, jogo);// Perguntar o que o jogador deseja fazer
+			// Jogar carta caso seja possivel, se n pesque
+			printf("Mesa:\n");
+			imprime_listad(jogo, 1); // Imprime a jogada antes de sair
+			tecla_continuar();// Aperte para continuar
+			//passTurn(p1, p2, &atu, &turno); // Passa o turno
+		} else if(turno == 2) {
+			printf("Mesa:\n");
+			imprime_listad(jogo, 1);
+			printf("Mao do jogador %d\n", turno);
+			listadin_imprime(p2);
+			player_choose(p2, &baralho, jogo);// Perguntar o que o jogador deseja fazer
+			// Jogar carta caso seja possivel, se n pesque
+			printf("Mesa:\n");
+			imprime_listad(jogo, 1); // Imprime a jogada antes de sair
+			tecla_continuar();// Aperte para continuar
+			//passTurn(p1, p2, &atu, &turno); // Passa o turno
+		}
 		
 		  //ShowGameplay(p1, p2, jogo, turno);
 		WhoWins = checkWin(p1, p2, jogo, &baralho);

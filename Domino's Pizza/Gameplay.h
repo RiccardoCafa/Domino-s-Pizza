@@ -92,7 +92,7 @@ int checkWin(tp_hand *p1, tp_hand *p2, tp_jogada *jogo ,tp_deck *baralho){ // JA
 		valor_l = jogo->ini->v_L;
 		if(listad_search_for(&p1, valor_l, valor_r) != NULL) return 0;
 		if(listad_search_for(&p2, valor_l, valor_r) != NULL) return 0;
-		if(listad_soma(&p1) > listad_soma(&p2)) {
+		if(listad_soma(p1) > listad_soma(p2)) {
 			return 1;
 		} else {
 			return 2;

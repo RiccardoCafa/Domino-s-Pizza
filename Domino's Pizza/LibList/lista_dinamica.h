@@ -34,6 +34,7 @@ tp_listad *listad_peca_pos(tp_listad *fil, int pos) {
 		aux = aux->next;
 		tmp++;
 	}
+	if(aux == NULL) return NULL;
 	return aux;
 }
 
@@ -90,7 +91,7 @@ int listad_remove_peca(tp_listad **fil, tp_listad *endereco_peca) {
 	ant = NULL;
 	atu = *fil;
 	if(endereco_peca == NULL) return 0;
-	while(atu->next != NULL && atu != endereco_peca) {
+	while(atu != NULL && atu != endereco_peca) {
 		ant = atu;
 		atu = atu->next;
 	}
@@ -109,7 +110,7 @@ int listad_remove_peca(tp_listad **fil, tp_listad *endereco_peca) {
 	return 1;
 }
 
-void listad_imprime(tp_listad *fil){
+void listadin_imprime(tp_listad *fil){
 	tp_listad *aux;
 	aux = fil;
 	while(aux != NULL) {

@@ -64,7 +64,8 @@ void player_choose(tp_hand *player, tp_deck *baralho, tp_jogada *jogo) {
 		if(esc == 2) {
 			pickupCard(baralho, player);
 			printf("Mao do jogador: \n");
-			listad_imprime(player);
+			listadin_imprime(player);
+			certo = 1;
 			return;
 		} else if(esc == 1) {
 			printf("Escolha de 0 a %d qual peca deseja jogar na mesa...\n", listad_size(player) - 1);
@@ -86,6 +87,7 @@ void player_choose(tp_hand *player, tp_deck *baralho, tp_jogada *jogo) {
 				exist = play_card(player, jogo, esc, iof);
 				if(exist == 0) {
 					printf("Peca nao inserida\n");
+					certo = 0;
 				} else if(exist == 1) {
 					printf("Peca inserida\n");
 					certo = 1;

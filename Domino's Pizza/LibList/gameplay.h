@@ -18,13 +18,13 @@ int Game_init(tp_stack *heap, tp_Piece **p1, tp_Piece **p2) {
 	}
 	printf("\n");
 	
-	if (stack_empty(heap)) { // Verifica se o deck est� vazio;
+	if (stack_empty(heap)) { // Verifica se o deck está vazio;
 		return 0;
 	} else {
 		int i;
-		for (i=0; i < 7; i++) {	//Loop para add 7 fichas na m�o do jogador;
+		for (i=0; i < 7; i++) {	//Loop para add 7 fichas na mão do jogador;
 			pop(heap, &x, &y); // Retira as fichas do deck
-			listad_insere_peca(p1, x, y); // Insere as fichas na mão do jogador p1.
+			listad_insere_peca(p1, x, y); // Insere as fichas na mÃ£o do jogador p1.
 			pop(heap, &x, &y); // Retira as fichas do deck
 			listad_insere_peca(p2, x, y);
 		}
@@ -76,11 +76,25 @@ int Checkwin(tp_Piece *p1, tp_Piece *p2, tp_listade *jogo ,tp_stack *baralho){
     } else if(empty_piece(p2) == 1) {//verifica se a mao do jogador 2 esta vazia
         return 2;
     } else if(stack_empty(baralho)) { //verifica se o baralho esta vazio 
-        int valor_r, valor_l;
-        if(search_Piece(p1, jogo->ini->v_L, jogo->ini->v_R) == 0) return 0;//verifica os lados do jogo 
-        if(search_Piece(p2, jogo->ini->v_L, jogo->ini->v_R) == 0) return 0;//se existir chances de jogar
-        if(search_Piece(p1, jogo->fim->v_L, jogo->ini->v_R) == 0) return 0;//retorna 0 e continua o jogo
-        if(search_Piece(p2, jogo->fim->v_L, jogo->ini->v_R) == 0) return 0;
+        int valor_r, valor_l,count = 0;
+        if(search_Piece(p1, jogo->ini->v_L, jogo->ini->v_R) == 0){ 
+		conut++;
+		return 0};
+	if(search_Piece(p1, jogo->fim->v_L, jogo->fim->v_R) == 0){ 
+		count++;
+		return 0};//verifica os lados do jogo 
+	    if(count==2){
+		    count=0;
+		    passTurn();}
+        if(search_Piece(p2, jogo->ini->v_L, jogo->ini->v_R) == 0){ 
+		count++;
+		return 0};//se existir chances de jogar//retorna 0 e continua o jogo
+        if(search_Piece(p2, jogo->fim->v_L, jogo->fim->v_R) == 0){ 
+		count++;
+		return 0};
+	      if(count==2){
+		    count=0;
+		    passTurn();}
         if(player_pecas_soma(p1) > player_pecas_soma(p2)) {
 		//soma as pecas que estao na mao de cada jogar se o jogador 1 tiver menos ele ganha se n o 2 ganha.
             return 1;

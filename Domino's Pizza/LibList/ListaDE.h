@@ -28,7 +28,7 @@ tp_no *aloca() {//aloca espaco
 	return pt;
 }
 
-int insere_lista_no_fim(tp_listade *lista, tp_item L, tp_item R) {//insere no fim da lista
+int insere_lista_no_fim(tp_listade *lista, int L, int R) {//insere no fim da lista
 	tp_no *novo;
 	novo=aloca();
 	if(!novo) return 0;
@@ -47,7 +47,7 @@ int insere_lista_no_fim(tp_listade *lista, tp_item L, tp_item R) {//insere no fi
 	return 1;
 }
 
-int insere_lista_no_inicio(tp_listade *lista, tp_item L, tp_item R) {//insere no inicio da lista
+int insere_lista_no_inicio(tp_listade *lista, int L, int R) {//insere no inicio da lista
 	tp_no *novo;
 	novo=aloca();
 	if(!novo) return 0;

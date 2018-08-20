@@ -1,0 +1,10 @@
+C:\Users\ricca\source\repos\Domino-s-Pizza-Launcher\Domino-s-Pizza-Launcher\bin\Debug\Domino-s-Pizza-Launcher.exe.config
+C:\Users\ricca\source\repos\Domino-s-Pizza-Launcher\Domino-s-Pizza-Launcher\bin\Debug\Domino-s-Pizza-Launcher.exe
+C:\Users\ricca\source\repos\Domino-s-Pizza-Launcher\Domino-s-Pizza-Launcher\bin\Debug\Domino-s-Pizza-Launcher.pdb
+C:\Users\ricca\source\repos\Domino-s-Pizza-Launcher\Domino-s-Pizza-Launcher\obj\Debug\Domino-s-Pizza-Launcher.csprojAssemblyReference.cache
+C:\Users\ricca\source\repos\Domino-s-Pizza-Launcher\Domino-s-Pizza-Launcher\obj\Debug\Domino_s_Pizza_Launcher.Form1.resources
+C:\Users\ricca\source\repos\Domino-s-Pizza-Launcher\Domino-s-Pizza-Launcher\obj\Debug\Domino_s_Pizza_Launcher.Properties.Resources.resources
+C:\Users\ricca\source\repos\Domino-s-Pizza-Launcher\Domino-s-Pizza-Launcher\obj\Debug\Domino-s-Pizza-Launcher.csproj.GenerateResource.cache
+C:\Users\ricca\source\repos\Domino-s-Pizza-Launcher\Domino-s-Pizza-Launcher\obj\Debug\Domino-s-Pizza-Launcher.csproj.CoreCompileInputs.cache
+C:\Users\ricca\source\repos\Domino-s-Pizza-Launcher\Domino-s-Pizza-Launcher\obj\Debug\Domino-s-Pizza-Launcher.exe
+C:\Users\ricca\source\repos\Domino-s-Pizza-Launcher\Domino-s-Pizza-Launcher\obj\Debug\Domino-s-Pizza-Launcher.pdb

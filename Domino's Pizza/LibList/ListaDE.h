@@ -118,26 +118,4 @@ int remove_listad(tp_listade *lista, tp_item r_L, tp_item r_R) {
 	free(atu);
 	return 1;
 }
-
-int busca_listad(tp_listade *lista, tp_item r_L, tp_item r_R) {//busca por valores na lista
-	tp_no *atu;
-	atu = lista->ini;
-	while(atu != NULL) {
-		if((atu->v_L == r_L && atu->v_R == r_R) || (atu->v_L == r_R && atu->v_R == r_L)) {
-			return 1;
-		}
-		atu = atu->prox;
-	}
-	return 0;
-}
-
-tp_no *busca_listad_no_dif(tp_listade *lista, tp_item r_L, tp_item r_R) {//busca por valores na lista e retorna o endereco
-	tp_no *aux;
-	aux = lista->ini;
-	while((aux != NULL) && ((aux->v_L == r_L || aux->v_L == r_R) && ((aux->v_R == r_L || aux->v_R == r_R)))) {
-		aux = aux->prox;
-	}
-	return aux;
-}
-
 #endif

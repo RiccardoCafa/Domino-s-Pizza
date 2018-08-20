@@ -70,24 +70,22 @@ void passTurn(int *turno, tp_Piece *p1, tp_Piece *p2, tp_Piece **p_at){
 }
 
 int Checkwin(tp_Piece *p1, tp_Piece *p2, tp_listade *jogo ,tp_stack *baralho){
-	//checa quem se alguem ganhou e qual foi
+	//checa quem se alguem ganhou e quem foi
     if(empty_piece(p1) == 1) {//verificar se mao do jogador 1 esta vazia
         return 1;
     } else if(empty_piece(p2) == 1) {//verifica se a mao do jogador 2 esta vazia
         return 2;
     } else if(stack_empty(baralho)) { //verifica se o baralho esta vazio 
-        int valor_r, valor_l,count = 0;
-        if(search_Piece(p1, jogo->ini->v_L, jogo->ini->v_R) == 0){ 
-		count++;}
-	if(search_Piece(p1, jogo->fim->v_L, jogo->fim->v_R) == 0){ 
-		count++;
+        int valor_r, valor_l;
+        if(search_Piece(p1, jogo->ini->v_L, jogo->ini->v_R) != 0){ 
+		return 0;
+	if(search_Piece(p1, jogo->fim->v_L, jogo->fim->v_R) != 0){ 
+		return 0;
 	}//verifica os lados do jogo 
-        if(search_Piece(p2, jogo->ini->v_L, jogo->ini->v_R) == 0){ 
-		count++;}//se existir chances de jogar//retorna 0 e continua o jogo
-        if(search_Piece(p2, jogo->fim->v_L, jogo->fim->v_R) == 0){ 
-		count++;}
-	      if(count<4){//se nao foi igual a 4 significa que alguem ainda pode jogar
-		    return -1;}
+        if(search_Piece(p2, jogo->ini->v_L, jogo->ini->v_R) != 0){ 
+		return 0}//se existir chances de jogar//
+        if(search_Piece(p2, jogo->fim->v_L, jogo->fim->v_R) != 0){ 
+		return 0}
         if(player_pecas_soma(p1) > player_pecas_soma(p2)) {
 		//soma as pecas que estao na mao de cada jogar se o jogador 1 tiver menos ele ganha se n o 2 ganha.
             return 1;

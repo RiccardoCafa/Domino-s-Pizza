@@ -2,10 +2,10 @@
 #define LISTADE_H
 #include <stdio.h>
 #include <stdlib.h>
-typedef int tp_item;
+
 typedef struct tp_no_aux {
-	tp_item v_R;
-	tp_item v_L;
+	int v_R;
+	int v_L;
 	struct tp_no_aux *ant;
 	struct tp_no_aux *prox;
 } tp_no;
@@ -28,7 +28,7 @@ tp_no *aloca() {
 	return pt;
 }
 
-int insere_lista_no_fim(tp_listade *lista, tp_item L, tp_item R) {
+int insere_lista_no_fim(tp_listade *lista, int L, int R) {
 	tp_no *novo;
 	novo=aloca();
 	if(!novo) return 0;
@@ -47,7 +47,7 @@ int insere_lista_no_fim(tp_listade *lista, tp_item L, tp_item R) {
 	return 1;
 }
 
-int insere_lista_no_inicio(tp_listade *lista, tp_item L, tp_item R) {
+int insere_lista_no_inicio(tp_listade *lista, int L, int R) {
 	tp_no *novo;
 	novo=aloca();
 	if(!novo) return 0;
@@ -82,7 +82,7 @@ void imprime_listad(tp_listade *lista, int ordem) {
 			atu = atu->ant;
 		}
 		break;
-		default: printf("codigo invalido");
+		default: printf("codigo invalido"); break;
 	}
 	printf("\n");
 }
@@ -92,7 +92,7 @@ int listade_vazia(tp_listade *lista) {
 	return 0;
 }
 
-int remove_listad(tp_listade *lista, tp_item r_L, tp_item r_R) {
+int remove_listad(tp_listade *lista, int r_L, int r_R) {
 	tp_no *atu;
 	atu = lista->ini;
 	while((atu!=NULL)&&(atu->v_L != r_L && atu->v_R != r_R)) {
@@ -119,7 +119,7 @@ int remove_listad(tp_listade *lista, tp_item r_L, tp_item r_R) {
 	return 1;
 }
 
-int busca_listad(tp_listade *lista, tp_item r_L, tp_item r_R) {
+int busca_listad(tp_listade *lista, int r_L, int r_R) {
 	tp_no *atu;
 	atu = lista->ini;
 	while(atu != NULL) {
@@ -131,7 +131,7 @@ int busca_listad(tp_listade *lista, tp_item r_L, tp_item r_R) {
 	return 0;
 }
 
-tp_no *busca_listad_no_dif(tp_listade *lista, tp_item r_L, tp_item r_R) {
+tp_no *busca_listad_no_dif(tp_listade *lista, int r_L, int r_R) {
 	tp_no *aux;
 	aux = lista->ini;
 	while((aux != NULL) && ((aux->v_L == r_L || aux->v_L == r_R) && ((aux->v_R == r_L || aux->v_R == r_R)))) {

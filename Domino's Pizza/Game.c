@@ -22,14 +22,16 @@ keybd_event (VK_MENU, 0x38, KEYEVENTF_KEYUP, 0);
 	int turno = 0;
 	int chs, chs2, chs3, feito = 0;
 	int l, r, vl, vr;
-	
+	int WhoWins = 0;
 	introduction();
 	system("cls");
 	
 	Game_init(&heap, &p1, &p2);
 	firstPlay(&p1, &p2, &game, &p_atu, &turno);
 	
-	while(Checkwin(p1, p2, game, &heap) == 0) {
+	while(WhoWins == 0) {
+		WhoWins = Checkwin(p1, p2, game, &heap);
+		if(WhoWins == -1) passTurn(&turno, p1, p2, &p_atu);
 		feito = 0;
 		printf("\n\n\n\n\n\n\n\n\n");
 		printf("* Vez do Jogador %d *\n", turno);
@@ -62,7 +64,6 @@ keybd_event (VK_MENU, 0x38, KEYEVENTF_KEYUP, 0);
 						} else {
 							printf("\n\nNão foi possível jogar a peça!\n");
 							continue;
-								system("cls");
 						}
 					} else {
 						//Fim
@@ -75,7 +76,6 @@ keybd_event (VK_MENU, 0x38, KEYEVENTF_KEYUP, 0);
 						} else {
 							printf("\n\nNão foi possível jogar a peça!\n");
 							continue;
-								system("cls");
 						}
 					}
 					if(turno == 1) {
@@ -102,7 +102,7 @@ keybd_event (VK_MENU, 0x38, KEYEVENTF_KEYUP, 0);
 		}
 		passTurn(&turno, p1, p2, &p_atu);
 	}
-	int WhoWins = Checkwin(p1, p2, game, &heap);
+	
 	switch(WhoWins) {
 		case 1:
 			printf("Player 1 ganhou!\n");

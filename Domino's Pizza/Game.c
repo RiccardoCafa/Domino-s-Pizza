@@ -2,10 +2,15 @@
 #include <stdlib.h>
 #include <time.h>
 #include <locale.h>
+#include <windows.h>
 #include "domino_libs.h"
 
-
 int main() {
+keybd_event (VK_MENU, 0x36, 0, 0); 
+keybd_event (VK_RETURN, 0x1C, 0, 0); 
+keybd_event (VK_RETURN, 0x1C, KEYEVENTF_KEYUP, 0); 
+keybd_event (VK_MENU, 0x38, KEYEVENTF_KEYUP, 0);
+
 	tp_Piece *p1 = init_piece();
 	tp_Piece *p2 = init_piece();
 	tp_Piece *p_atu, *p_aux;
@@ -19,6 +24,7 @@ int main() {
 	int l, r, vl, vr;
 	
 	introduction();
+	system("cls");
 	
 	Game_init(&heap, &p1, &p2);
 	firstPlay(&p1, &p2, &game, &p_atu, &turno);
@@ -26,44 +32,50 @@ int main() {
 	while(Checkwin(p1, p2, game, &heap) == 0) {
 		feito = 0;
 		printf("\n\n\n\n\n\n\n\n\n");
-		printf("Jogador %d:\n", turno);
-		printf("Mesa:\n");
+		printf("* Vez do Jogador %d *\n", turno);
+		printf("\n\nMesa:\n");
 		imprime_listad(game, 1);
 		printf("Peças do jogador:\n");
 		player_imprime(p_atu);
 		while(feito == 0) {
-			printf("O que deseja fazer?\n1 - Jogar peça\n2 - Cava\n");
+			printf("\nO que deseja fazer?\n1 - Jogar peça\n2 - Cava\n\n Opção: ");
 			scanf("%d", &chs);
 			if(chs == 1) {
 				// Jogar peça
-				printf("Qual peça desejas jogar na mesa?\n");
+				printf("\nQual peça desejas jogar na mesa?\n Opção: ");
 				scanf("%d", &chs2);
 				p_aux = position_piece(p_atu, chs2);
 				if(p_aux == NULL) {
 					printf("Ops! Não foi encontrado!\n"); continue;
 				} else {
-					printf("Queres jogar no inicio (1) ou no fim (2)?\n");
+					printf("\nQueres jogar no inicio (1) ou no fim (2)?\n Opção: ");
 					scanf("%d", &chs3);
 					vl = p_aux->left; vr = p_aux->right;
 					if(chs3 == 1) {
 						//Inicio
 						if(game->ini->v_L == vl) {
 							insere_lista_no_inicio(game, vr, vl);
+								system("cls");
 						} else if(game->ini->v_L == vr) {
-							insere_lista_no_inicio(game, vl, vr);	
+							insere_lista_no_inicio(game, vl, vr);
+								system("cls");	
 						} else {
-							printf("Não foi possível jogar a peça!\n");
+							printf("\n\nNão foi possível jogar a peça!\n");
 							continue;
+								system("cls");
 						}
 					} else {
 						//Fim
 						if(game->fim->v_R == vl) {
 							insere_lista_no_fim(game, vl, vr);
+								system("cls");
 						} else if(game->fim->v_R == vr) {
 							insere_lista_no_fim(game, vr, vl);	
+								system("cls");
 						} else {
-							printf("Não foi possível jogar a peça!\n");
+							printf("\n\nNão foi possível jogar a peça!\n");
 							continue;
+								system("cls");
 						}
 					}
 					if(turno == 1) {
@@ -78,13 +90,14 @@ int main() {
 				// Cava
 				if(stack_empty(&heap)) {
 					printf("Ops! Está vazio!\n");
-					continue;	
+					continue;
 				}
 				pop(&heap, &l, &r);
 				listad_insere_peca(&p_atu, l, r);
 				printf("Peças do jogador:\n");
 				player_imprime(p_atu);
 				feito = 1;
+					system("cls");
 			}
 		}
 		passTurn(&turno, p1, p2, &p_atu);

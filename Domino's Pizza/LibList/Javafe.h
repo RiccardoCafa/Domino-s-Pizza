@@ -8,23 +8,23 @@ typedef struct Piece {
     struct Piece *next;
 } tp_Piece;
 
-tp_Piece *init_piece() {
+tp_Piece *init_piece() {//inicializa lista de peca
 	return NULL;
 }
 
-tp_Piece *alloc_piece(){
+tp_Piece *alloc_piece(){//aloca espaco para a lista de peca
 	tp_Piece *novo;
 	novo = (tp_Piece *) malloc(sizeof(tp_Piece));
 	return novo;
 }
 
 
-int empty_piece(tp_Piece *l) {
+int empty_piece(tp_Piece *l) {//verificar se ela esta vazia
 	if(l == NULL) return 1;
 	else return 0;
 }
 
-int size_piece(tp_Piece *piece) {
+int size_piece(tp_Piece *piece) {//tamanho da lista de peca
 	tp_Piece *aux;
 	aux = piece;
 	int count = 0;
@@ -35,7 +35,7 @@ int size_piece(tp_Piece *piece) {
 	return count;
 }
 
-tp_Piece *position_piece(tp_Piece *piece, int pos) {
+tp_Piece *position_piece(tp_Piece *piece, int pos) {//identifica a peca na posicao dada
 	int tmp = 0;
 	tp_Piece *aux = piece;
 	if(pos >= size_piece(piece)) return NULL;
@@ -48,12 +48,12 @@ tp_Piece *position_piece(tp_Piece *piece, int pos) {
 	return aux;
 }
 
-int search_Piece(tp_Piece *fil, int left, int right) {
-    // Retorna null caso ele não encontre nada
+int search_Piece(tp_Piece *fil, int left, int right) {//procura pela peca na lista
+    // Retorna null caso ele nÃ£o encontre nada
     tp_Piece *aux = fil;
     while((aux != NULL)) {
         if(aux->left == left && aux->right == right) {
-            // Encontrou a peça
+            // Encontrou a peÃ§a
             return 1;
         }
         aux=aux->next;
@@ -61,7 +61,7 @@ int search_Piece(tp_Piece *fil, int left, int right) {
     return 0;
 }
 
-int remove_by_value_piece(tp_Piece **piece, int valor_l, int valor_r) {
+int remove_by_value_piece(tp_Piece **piece, int valor_l, int valor_r) {//remove uma peca da lista pelo valor pedido
 	tp_Piece *ant, *atu;
 	ant = NULL;
 	atu = *piece;
@@ -73,7 +73,7 @@ int remove_by_value_piece(tp_Piece **piece, int valor_l, int valor_r) {
 		atu = atu->next;
 	}
 	if(atu == NULL) {
-		//Nao existe o endereço para tal peça
+		//Nao existe o endereÃ§o para tal peÃ§a
 		return 0;
 	} else {
 		if(ant != NULL) {
@@ -88,7 +88,7 @@ int remove_by_value_piece(tp_Piece **piece, int valor_l, int valor_r) {
 	return 1;
 }
 
-int listad_insere_peca(tp_Piece **piece, int left, int right) {
+int listad_insere_peca(tp_Piece **piece, int left, int right) {//insere uma peca na lista
     tp_Piece *aux;
     tp_Piece *novo_no;
     novo_no = alloc_piece();
@@ -108,7 +108,7 @@ int listad_insere_peca(tp_Piece **piece, int left, int right) {
     return 1;
 }
 
-void player_imprime(tp_Piece *piece){
+void player_imprime(tp_Piece *piece){//mosta as pecas na lista
     tp_Piece *aux;
     aux = piece;
     int count = 0;
@@ -121,7 +121,7 @@ void player_imprime(tp_Piece *piece){
     printf("\n");
 }
 
-int player_pecas_soma (tp_Piece *piece){ 
+int player_pecas_soma (tp_Piece *piece){ //soma as pecas que estao na mao do jogador
     tp_Piece *pie;
     int soma = 0;
     pie = piece;

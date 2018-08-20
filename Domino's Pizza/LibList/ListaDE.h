@@ -15,20 +15,20 @@ typedef struct {
 	tp_no *fim;
 } tp_listade;
 
-tp_listade *inicializa_listade() {
+tp_listade *inicializa_listade() {//inicializa lista duplamente encadeada
 	tp_listade *lista = (tp_listade *) malloc(sizeof(tp_listade));
 	lista->ini = NULL;
 	lista->fim = NULL;
 	return lista;
 }
 
-tp_no *aloca() {
+tp_no *aloca() {//aloca espaco
 	tp_no *pt;
 	pt = (tp_no *) malloc(sizeof(tp_no));
 	return pt;
 }
 
-int insere_lista_no_fim(tp_listade *lista, tp_item L, tp_item R) {
+int insere_lista_no_fim(tp_listade *lista, tp_item L, tp_item R) {//insere no fim da lista
 	tp_no *novo;
 	novo=aloca();
 	if(!novo) return 0;
@@ -47,7 +47,7 @@ int insere_lista_no_fim(tp_listade *lista, tp_item L, tp_item R) {
 	return 1;
 }
 
-int insere_lista_no_inicio(tp_listade *lista, tp_item L, tp_item R) {
+int insere_lista_no_inicio(tp_listade *lista, tp_item L, tp_item R) {//insere no inicio da lista
 	tp_no *novo;
 	novo=aloca();
 	if(!novo) return 0;
@@ -65,7 +65,7 @@ int insere_lista_no_inicio(tp_listade *lista, tp_item L, tp_item R) {
 	return 1;
 }
 
-void imprime_listad(tp_listade *lista, int ordem) {
+void imprime_listad(tp_listade *lista, int ordem) {//mostra os valores dentro da lista
 	tp_no *atu;
 	
 	switch(ordem) {
@@ -87,7 +87,7 @@ void imprime_listad(tp_listade *lista, int ordem) {
 	printf("\n");
 }
 
-int listade_vazia(tp_listade *lista) {
+int listade_vazia(tp_listade *lista) {//verificar se a lista esta vazia
 	if((lista->ini == NULL) && (lista->fim==NULL)) return 1;
 	return 0;
 }
@@ -119,7 +119,7 @@ int remove_listad(tp_listade *lista, tp_item r_L, tp_item r_R) {
 	return 1;
 }
 
-int busca_listad(tp_listade *lista, tp_item r_L, tp_item r_R) {
+int busca_listad(tp_listade *lista, tp_item r_L, tp_item r_R) {//busca por valores na lista
 	tp_no *atu;
 	atu = lista->ini;
 	while(atu != NULL) {
@@ -131,7 +131,7 @@ int busca_listad(tp_listade *lista, tp_item r_L, tp_item r_R) {
 	return 0;
 }
 
-tp_no *busca_listad_no_dif(tp_listade *lista, tp_item r_L, tp_item r_R) {
+tp_no *busca_listad_no_dif(tp_listade *lista, tp_item r_L, tp_item r_R) {//busca por valores na lista e retorna o endereco
 	tp_no *aux;
 	aux = lista->ini;
 	while((aux != NULL) && ((aux->v_L == r_L || aux->v_L == r_R) && ((aux->v_R == r_L || aux->v_R == r_R)))) {

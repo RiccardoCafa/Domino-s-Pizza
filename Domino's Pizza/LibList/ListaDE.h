@@ -2,10 +2,10 @@
 #define LISTADE_H
 #include <stdio.h>
 #include <stdlib.h>
-typedef int tp_item;
+
 typedef struct tp_no_aux {
-	tp_item v_R;
-	tp_item v_L;
+	int v_R;
+	int v_L;
 	struct tp_no_aux *ant;
 	struct tp_no_aux *prox;
 } tp_no;
@@ -82,7 +82,7 @@ void imprime_listad(tp_listade *lista, int ordem) {//mostra os valores dentro da
 			atu = atu->ant;
 		}
 		break;
-		default: printf("codigo invalido");
+		default: printf("codigo invalido"); break;
 	}
 	printf("\n");
 }
@@ -92,7 +92,7 @@ int listade_vazia(tp_listade *lista) {//verificar se a lista esta vazia
 	return 0;
 }
 
-int remove_listad(tp_listade *lista, tp_item r_L, tp_item r_R) {
+int remove_listad(tp_listade *lista, int r_L, int r_R) {
 	tp_no *atu;
 	atu = lista->ini;
 	while((atu!=NULL)&&(atu->v_L != r_L && atu->v_R != r_R)) {

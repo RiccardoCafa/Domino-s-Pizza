@@ -5,14 +5,13 @@
 #define MAX_STACK 28
 
 //here you can define the type of the item, remember to adjust the mask in the print function above
-typedef int tp_item;
 
 typedef struct{
 	
 	int top;
 	
-	tp_item R[MAX_STACK]; // VALORES DA RIGHT
-	tp_item L[MAX_STACK]; // VALORES DA LEFT
+	int R[MAX_STACK]; // VALORES DA RIGHT
+	int L[MAX_STACK]; // VALORES DA LEFT
 	
 }tp_stack;
 
@@ -42,7 +41,7 @@ int stack_empty(tp_stack *stack){
 }
 
 //Add an item in the stack
-int push(tp_stack *stack, tp_item L, tp_item R){
+int push(tp_stack *stack, int L, int R){
 	
 	if (stack_full(stack)) return 0;
 	
@@ -55,7 +54,7 @@ int push(tp_stack *stack, tp_item L, tp_item R){
 }
 
 //Removes an item from the stack
-int pop(tp_stack *stack, tp_item *r_L, tp_item *r_R){
+int pop(tp_stack *stack, int *r_L, int *r_R){
 	if (stack_empty(stack)) return 0;
 	
 	*r_L = stack->L[stack->top];
@@ -65,7 +64,7 @@ int pop(tp_stack *stack, tp_item *r_L, tp_item *r_R){
 }
 
 //Inform the top of the stack without removing the item
-int top(tp_stack *stack, tp_item *r_L, tp_item *r_R){
+int top(tp_stack *stack, int *r_L, int *r_R){
 	
 	if (stack_empty(stack)) return 0;
 	
@@ -78,8 +77,8 @@ int top(tp_stack *stack, tp_item *r_L, tp_item *r_R){
 //Print the values inside the stack without removing them
 void print_stack(tp_stack stack){ // apenas para testes
 	
-	tp_item r_L;
-	tp_item r_R;
+	int r_L;
+	int r_R;
 	
 	while(!stack_empty(&stack)){
 		pop(&stack, &r_L, &r_R);
@@ -88,10 +87,10 @@ void print_stack(tp_stack stack){ // apenas para testes
 }
 
 //Look up for the piece 
-int stack_lookup(tp_stack stack, tp_item look_L, tp_item look_R){ // apenas para testes
+int stack_lookup(tp_stack stack, int look_L, int look_R){ // apenas para testes
 	
-	tp_item r_L;
-	tp_item r_R;
+	int r_L;
+	int r_R;
 	while(!stack_empty(&stack)){
 		pop(&stack, &r_L, &r_R);
 		if((r_L == look_L && r_R == look_R) || (r_L == look_R && r_R == look_L)) {
@@ -114,7 +113,7 @@ int concatenate_stack(tp_stack *stack1, tp_stack *stack2){
 	if (stack_empty(stack2) || (stack1->top + stack2->top > MAX_STACK - 1)) return 0;
 	
 	tp_stack stack3;
-	tp_item r_L, r_R;
+	int r_L, r_R;
 	int i;
 	
 	while(!stack_empty(stack2)){

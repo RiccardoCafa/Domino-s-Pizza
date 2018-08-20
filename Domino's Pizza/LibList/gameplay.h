@@ -5,13 +5,13 @@ int Game_init(tp_stack *heap, tp_Piece **p1, tp_Piece **p2) {
 	int x, y, tamanhopilha = 0;
 	start_stack(heap);
 	srand((unsigned)time(NULL));
-	x = rand() % 7; /*gerar numero aleatorio de 0-6*/
-	y = rand() % 7;
+	x = rand() % 7; /*gerar numero aleatorio de 0-6 para o lado esquerdo*/
+	y = rand() % 7; /*gerar numero aleatorio de 0-6 para o lado direito */
 	while(tamanhopilha != MAX_STACK)/*verificar se ainda n prencheu tudo*/{
 		if(stack_lookup(*heap, x, y) == 0){
 			push(heap, x, y); /*colocar os numeros gerados na pilha*/
 			tamanhopilha++;
-		}else{
+		}else{//caso tenha achado o numero igual, gera outros numeros
 			x = rand() % 7;
 			y = rand() % 7;
 		}
@@ -86,7 +86,7 @@ int Checkwin(tp_Piece *p1, tp_Piece *p2, tp_listade *jogo ,tp_stack *baralho){
 		count++;}//se existir chances de jogar//retorna 0 e continua o jogo
         if(search_Piece(p2, jogo->fim->v_L, jogo->fim->v_R) == 0){ 
 		count++;}
-	      if(count<4){
+	      if(count<4){//se nao foi igual a 4 significa que alguem ainda pode jogar
 		    return -1;}
         if(player_pecas_soma(p1) > player_pecas_soma(p2)) {
 		//soma as pecas que estao na mao de cada jogar se o jogador 1 tiver menos ele ganha se n o 2 ganha.

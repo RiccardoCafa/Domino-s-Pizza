@@ -1,7 +1,7 @@
 #ifndef GAMEPLAY
 #define GAMEPLAY
 
-int Game_init(tp_stack *heap, tp_Piece **p1, tp_Piece **p2) {
+int Game_init(tp_stack *heap, tp_Piece **p1, tp_Piece **p2) {//gera o baralho embaralhado e distribui para os jogadores
 	int x, y, tamanhopilha = 0;
 	start_stack(heap);
 	srand((unsigned)time(NULL));

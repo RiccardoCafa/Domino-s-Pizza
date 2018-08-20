@@ -26,8 +26,29 @@ int introduction () {
 		break;
 		case 2:
 			system("cls");
-			printf("   Jogo de Dominó feito pela equipe:\n\t\tGabriel Melo;\n\t\tJander Silva; \n\t\tJafe Ferreira; \n\t\tMiguel Falcão e Riccardo Cafagna.\n\t\t\n");
-			printf("   Graduandos da Engenharia de Computação do SENAI CIMATEC\n   da disciplina de estrutura de dados I orientada pelo professor:\n\t\tMárcio Soussa.\n\n");
+			printf("\n\n\n\n\n\n\n");
+			printf("   Jogo de Dominó feito pela equipe:\n");
+			
+			printf("\t\t  ___                             ___   \n");
+			printf("\t\t |o o|        Domino's Pizza     |o o|  \n");
+			printf("\t\t |o_o| ___ ___  ___ ___  ___ ___ |o_o|  \n");
+			printf("\t\t |o  ||o  |o  ||o  |ooo||ooo|o o||o o|  \n");
+			printf("\t\t |__o||__o|__o||__o|ooo||ooo|o_o||o_o|  \n");
+			printf("\t\t Jafe   Jander   Gabriel  Miguel Riccardo\n");
+			printf("\t\tFerreira Silva 	  Melo    Falcão  Cafagna \n\n");
+			
+			printf("   Graduandos da Engenharia de Computação do SENAI CIMATEC\n   da disciplina de estrutura de dados I orientada pelo professor:\n");
+			
+			printf("\t\t\t   ________  \n");
+			printf("\t\t\t  /Márcio /| \n");
+			printf("\t\t\t / Soussa/ | \n");
+			printf("\t\t\t | o   o | | \n");
+			printf("\t\t\t | o   o | | \n");
+			printf("\t\t\t |-------| | \n");
+			printf("\t\t\t | o   o | | \n");
+			printf("\t\t\t | o   o | / \n");
+			printf("\t\t\t |_______|/ \n\n");
+			
 			printf("1- Voltar ao menu\n2- Sair\n\nOpção: ");
 			scanf("%d", &sobre);
 			switch (sobre){

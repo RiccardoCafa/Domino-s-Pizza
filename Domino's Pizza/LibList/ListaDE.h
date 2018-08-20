@@ -119,13 +119,16 @@ int remove_listad(tp_listade *lista, tp_item r_L, tp_item r_R) {
 	return 1;
 }
 
-tp_no *busca_listad(tp_listade *lista, tp_item r_L, tp_item r_R) {
+int busca_listad(tp_listade *lista, tp_item r_L, tp_item r_R) {
 	tp_no *atu;
 	atu = lista->ini;
-	while((atu != NULL) && (atu->v_L != r_L && atu->v_R != r_R)) {
+	while(atu != NULL) {
+		if((atu->v_L == r_L && atu->v_R == r_R) || (atu->v_L == r_R && atu->v_R == r_L)) {
+			return 1;
+		}
 		atu = atu->prox;
 	}
-	return atu;
+	return 0;
 }
 
 tp_no *busca_listad_no_dif(tp_listade *lista, tp_item r_L, tp_item r_R) {

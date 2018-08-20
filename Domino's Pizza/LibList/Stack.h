@@ -94,7 +94,7 @@ int stack_lookup(tp_stack stack, tp_item look_L, tp_item look_R){ // apenas para
 	tp_item r_R;
 	while(!stack_empty(&stack)){
 		pop(&stack, &r_L, &r_R);
-		if(r_L == look_L && r_R == look_R) {
+		if((r_L == look_L && r_R == look_R) || (r_L == look_R && r_R == look_L)) {
 			return 1;
 		}
 	}

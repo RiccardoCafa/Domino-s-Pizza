@@ -82,16 +82,12 @@ int Checkwin(tp_Piece *p1, tp_Piece *p2, tp_listade *jogo ,tp_stack *baralho){
 	if(search_Piece(p1, jogo->fim->v_L, jogo->fim->v_R) == 0){ 
 		count++;
 	}//verifica os lados do jogo 
-	    if(count==2){
-		    count=0;
-		    passTurn();
-	    }
         if(search_Piece(p2, jogo->ini->v_L, jogo->ini->v_R) == 0){ 
 		count++;}//se existir chances de jogar//retorna 0 e continua o jogo
         if(search_Piece(p2, jogo->fim->v_L, jogo->fim->v_R) == 0){ 
 		count++;}
-	      if(count<2){
-		    return 0;}
+	      if(count<4){
+		    return -1;}
         if(player_pecas_soma(p1) > player_pecas_soma(p2)) {
 		//soma as pecas que estao na mao de cada jogar se o jogador 1 tiver menos ele ganha se n o 2 ganha.
             return 1;

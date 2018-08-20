@@ -78,7 +78,7 @@ int Checkwin(tp_Piece *p1, tp_Piece *p2, tp_listade *jogo ,tp_stack *baralho){
     } else if(stack_empty(baralho)) { //verifica se o baralho esta vazio 
         int valor_r, valor_l,count = 0;
         if(search_Piece(p1, jogo->ini->v_L, jogo->ini->v_R) == 0){ 
-		count++;
+		count++;}
 	if(search_Piece(p1, jogo->fim->v_L, jogo->fim->v_R) == 0){ 
 		count++;
 	}//verifica os lados do jogo 

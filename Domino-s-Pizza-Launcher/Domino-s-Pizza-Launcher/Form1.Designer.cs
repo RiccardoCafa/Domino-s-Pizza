@@ -64,7 +64,7 @@
             // 
             this.modBox.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.modBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.modBox.Location = new System.Drawing.Point(551, 266);
+            this.modBox.Location = new System.Drawing.Point(551, 503);
             this.modBox.Name = "modBox";
             this.modBox.Size = new System.Drawing.Size(252, 26);
             this.modBox.TabIndex = 2;
@@ -75,7 +75,7 @@
             this.Titulo.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.Titulo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Titulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Titulo.Location = new System.Drawing.Point(551, 170);
+            this.Titulo.Location = new System.Drawing.Point(551, 535);
             this.Titulo.Multiline = true;
             this.Titulo.Name = "Titulo";
             this.Titulo.ReadOnly = true;

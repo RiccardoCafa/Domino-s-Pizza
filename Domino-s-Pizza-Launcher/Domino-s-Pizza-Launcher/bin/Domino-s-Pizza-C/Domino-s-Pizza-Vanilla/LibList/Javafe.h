@@ -61,7 +61,7 @@ int search_Piece(tp_Piece *fil, int left, int right) {//procura pela peca na lis
     return 0;
 }
 
-int look_for_value(tp_Piece *fil, int i_left, int f_right) {
+int look_for_value(tp_Piece *fil, int i_left, int f_right) {//procura uma peca para ser jogada
 	tp_Piece *aux = fil;
 	while(aux != NULL) {
         if(aux->left == i_left || aux->right == i_left || aux->left == f_right || aux->right == f_right) {
@@ -100,7 +100,7 @@ int remove_by_value_piece(tp_Piece **piece, int valor_l, int valor_r) {//remove 
 	return 1;
 }
 
-int listad_insere_peca_ord(tp_Piece **l, int left, int right){
+int listad_insere_peca_ord(tp_Piece **l, int left, int right){//insere as pecas em ordem
 	
 	tp_Piece *new_node, *atu, *ant;
 	

@@ -65,6 +65,7 @@ int insere_lista_no_inicio(tp_listade *lista, int L, int R) {//insere no inicio 
 	return 1;
 }
 
+
 void imprime_listad(tp_listade *lista, int ordem) {//mostra os valores dentro da lista
 	tp_no *atu;
 	

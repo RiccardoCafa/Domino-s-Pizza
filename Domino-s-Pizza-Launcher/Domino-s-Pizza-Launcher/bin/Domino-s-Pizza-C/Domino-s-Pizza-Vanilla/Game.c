@@ -25,16 +25,29 @@ keybd_event (VK_MENU, 0x38, KEYEVENTF_KEYUP, 0);// para maximizar a tela ao abri
 	int chs, chs2, chs3, feito = 0;
 	int l, r, vl, vr;
 	int WhoWins = 0;
-	introduction();//introducao do jogo (interface)
+	int AI = 0;
+	
 	system("cls");//apaga tudo que esta anterior a ele no prompt
 	
 	Game_init(&heap, &p1, &p2);//funcao que embaralha e distribui as pecas para os jogadores
 	firstPlay(&p1, &p2, &game, &p_atu, &turno);//verificar quem vai jogar
 	
+	//Pergunte se ele quer jogar com A.I.
+	printf("Antes que tudo comece...\nQuer jogar com ou sem A.I.?\n1 - Player vs Player\n2 - Player vs Computador\n");
+	scanf("%d", &AI);
+	
+	introduction();//introducao do jogo (interface)
+	
 	while(WhoWins == 0) {//comeco da partida
 		WhoWins = Checkwin(p1, p2, game, &heap);//verificar quem ganhou
 		feito = 0;
+		if(AI == 2 && turno == 2) {
+			ai_play(&p2, &game, &heap);
+			passTurn(&turno, p1, p2, &p_atu);
+		}
 		system("cls");
+		printf("BOT:\n");
+		player_imprime(p2);
 		printf("\n\n\n\n\n\n\n\n\n");
 		printf("* Vez do Jogador %d *\n", turno);
 		printf("\n\nMesa:\n");
@@ -43,6 +56,10 @@ keybd_event (VK_MENU, 0x38, KEYEVENTF_KEYUP, 0);// para maximizar a tela ao abri
 		player_imprime(p_atu);
 		
 		while(feito == 0) {//escolher a opcao de jogada
+			WhoWins = Checkwin(p1, p2, game, &heap);
+			if(WhoWins != 0) {
+				feito = 1; break;	
+			}
 			if(stack_empty(&heap) == 0) printf("\nO que deseja fazer?\n1 - Jogar peça\n2 - Cava\n\n Opção: "); else
 			printf("\nO que deseja fazer?\n1 - Jogar peça\n2 - Passa turno\n\n Opção: ");
 			scanf("%d", &chs);
@@ -97,11 +114,19 @@ keybd_event (VK_MENU, 0x38, KEYEVENTF_KEYUP, 0);// para maximizar a tela ao abri
 					//passTurn(&turno, p1, p2, &p_atu);
 					break;
 				}
-				pop(&heap, &l, &r);
-				listad_insere_peca_ord(&p_atu, l, r);
-				printf("Peças do jogador:\n");
+				if(turno == 1) {
+					pop(&heap, &l, &r);
+					listad_insere_peca_ord(&p1, l, r);
+					printf("Peças do jogador:\n");
+				} else {
+					pop(&heap, &l, &r);
+					listad_insere_peca_ord(&p2, l, r);
+					printf("Peças do jogador:\n");
+				}
+				
 				player_imprime(p_atu);
 				feito = 1;
+				system("pause");
 				system("cls");
 			}
 		}

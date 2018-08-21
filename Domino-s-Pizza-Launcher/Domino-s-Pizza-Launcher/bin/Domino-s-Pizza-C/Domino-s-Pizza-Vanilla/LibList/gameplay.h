@@ -11,11 +11,14 @@ int Game_init(tp_stack *heap, tp_Piece **p1, tp_Piece **p2) {//gera o baralho em
 		if(stack_lookup(*heap, x, y) == 0){
 			push(heap, x, y); /*colocar os numeros gerados na pilha*/
 			tamanhopilha++;
+			
 		}else{//caso tenha achado o numero igual, gera outros numeros
 			x = rand() % 7;
 			y = rand() % 7;
 		}
 	}
+	//printf("%d", tamanhopilha);
+	//print_stack(*heap);
 	printf("\n");
 	
 	if (stack_empty(heap)) { // Verifica se o deck esta vazio;
@@ -77,8 +80,8 @@ int Checkwin(tp_Piece *p1, tp_Piece *p2, tp_listade *jogo ,tp_stack *baralho){
         return 2;
     } else if(stack_empty(baralho)) { //verifica se o baralho esta vazio 
         int valor_r, valor_l;
-        if(look_for_value(p1, jogo->ini->v_L, jogo->fim->v_R) == 1) return 0; //verifica os lados do jogo 
-        if(look_for_value(p2, jogo->ini->v_L, jogo->fim->v_R) == 1) return 0;//se existir chances de jogar//
+        if(look_for_value(p1, jogo->ini->v_L, jogo->fim->v_R) != 0) return 0; //verifica os lados do jogo 
+        if(look_for_value(p2, jogo->ini->v_L, jogo->fim->v_R) != 0) return 0;//se existir chances de jogar//
         if(player_pecas_soma(p1) > player_pecas_soma(p2)) {
 		//soma as pecas que estao na mao de cada jogar se o jogador 1 tiver menos ele ganha se n o 2 ganha.
             return 2;
@@ -92,5 +95,48 @@ int Checkwin(tp_Piece *p1, tp_Piece *p2, tp_listade *jogo ,tp_stack *baralho){
     	return 0;
 	}
 }
+
+void ai_play(tp_Piece **p2, tp_listade **jogo, tp_stack *heap) {//BOT
+	int which, can;
+	int l, r;
+	int vr, vl;
+	tp_Piece *ai_atu = *p2;
+	which = look_for_value(*p2, (*jogo)->ini->v_L, (*jogo)->fim->v_R);
+	if(which == 1) {
+		can = 0;
+		while(ai_atu != NULL) {
+			vr = ai_atu->right;
+			vl = ai_atu->left;
+			if(ai_atu->left == (*jogo)->ini->v_L) {
+				insere_lista_no_inicio(*jogo, vr, vl); 
+				can = 1;
+			} else if(ai_atu->right == (*jogo)->ini->v_L) {
+				insere_lista_no_inicio(*jogo, vl, vr); 
+				can = 1;
+			} else if(ai_atu->left == (*jogo)->fim->v_R) {
+				insere_lista_no_fim(*jogo, vl, vr); 
+				can = 1;
+			} else if(ai_atu->right == (*jogo)->fim->v_R) {
+				insere_lista_no_fim(*jogo, vr, vl); 
+				can = 1;
+			}
+			if(can == 1) {
+				remove_by_value_piece(p2, vl, vr); break;
+			}
+			ai_atu = ai_atu->next;
+		}
+	} else if(which == 0) {
+		if(stack_empty(heap)) { //caso o cave esta vazio
+			printf("Ops! Está vazio!\n");
+			//passTurn(&turno, p1, p2, &p_atu);
+		}else {
+			pop(heap, &l, &r);
+			listad_insere_peca_ord(p2, l, r);
+			printf("Peças do jogador:\n");	
+		}
+	}
+}
+
+
 
 #endif

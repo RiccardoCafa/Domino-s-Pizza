@@ -77,20 +77,13 @@ int Checkwin(tp_Piece *p1, tp_Piece *p2, tp_listade *jogo ,tp_stack *baralho){
         return 2;
     } else if(stack_empty(baralho)) { //verifica se o baralho esta vazio 
         int valor_r, valor_l;
-        if(search_Piece(p1, jogo->ini->v_L, jogo->ini->v_R) != 0){ 
-		return 0;
-	if(search_Piece(p1, jogo->fim->v_L, jogo->fim->v_R) != 0){ 
-		return 0;
-	}//verifica os lados do jogo 
-        if(search_Piece(p2, jogo->ini->v_L, jogo->ini->v_R) != 0){ 
-		return 0}//se existir chances de jogar//
-        if(search_Piece(p2, jogo->fim->v_L, jogo->fim->v_R) != 0){ 
-		return 0}
+        if(look_for_value(p1, jogo->ini->v_L, jogo->fim->v_R) == 1) return 0; //verifica os lados do jogo 
+        if(look_for_value(p2, jogo->ini->v_L, jogo->fim->v_R) == 1) return 0;//se existir chances de jogar//
         if(player_pecas_soma(p1) > player_pecas_soma(p2)) {
 		//soma as pecas que estao na mao de cada jogar se o jogador 1 tiver menos ele ganha se n o 2 ganha.
-            return 1;
-        } else if(player_pecas_soma(p1) < player_pecas_soma(p2)) {
             return 2;
+        } else if(player_pecas_soma(p1) < player_pecas_soma(p2)) {
+            return 1;
         } else {
         	return 3;
 		}
@@ -99,4 +92,5 @@ int Checkwin(tp_Piece *p1, tp_Piece *p2, tp_listade *jogo ,tp_stack *baralho){
     	return 0;
 	}
 }
+
 #endif

@@ -51,14 +51,26 @@ tp_Piece *position_piece(tp_Piece *piece, int pos) {//identifica a peca na posic
 int search_Piece(tp_Piece *fil, int left, int right) {//procura pela peca na lista
     // Retorna null caso ele nÃ£o encontre nada
     tp_Piece *aux = fil;
-    while((aux != NULL)) {
+    while(aux != NULL) {
         if(aux->left == left && aux->right == right) {
-            // Encontrou a peÃ§a
+            // Encontrou a peça
             return 1;
         }
-        aux=aux->next;
+        aux = aux->next;
     }
     return 0;
+}
+
+int look_for_value(tp_Piece *fil, int i_left, int f_right) {
+	tp_Piece *aux = fil;
+	while(aux != NULL) {
+        if(aux->left == i_left || aux->right == i_left || aux->left == f_right || aux->right == f_right) {
+            // Encontrou a peça
+            return 1;
+        }
+        aux = aux->next;
+    }
+	return 0;
 }
 
 int remove_by_value_piece(tp_Piece **piece, int valor_l, int valor_r) {//remove uma peca da lista pelo valor pedido
@@ -104,6 +116,44 @@ int listad_insere_peca(tp_Piece **piece, int left, int right) {//insere uma peca
             aux = aux->next;
         }
         aux->next = novo_no;
+    }
+    return 1;
+}
+
+int listad_insere_peca_ord(tp_Piece **piece, int left, int right) {//insere uma peca na lista
+    tp_Piece *aux = *piece;
+    tp_Piece *ant = NULL;
+    tp_Piece *novo_no;
+    novo_no = alloc_piece();
+    if(!novo_no) return 0;
+    printf("1\n");
+    novo_no->left = left;
+    novo_no->right = right;
+    novo_no->next = NULL;
+    printf("2\n");
+    if(empty_piece(*piece)) {
+        *piece = novo_no;
+        printf("3\n");
+    } else {
+    	printf("4\n");
+    	
+        while(aux != NULL && left + right >= aux->next->left + aux->next->right) {
+        	ant = aux;
+            aux = aux->next;
+        }
+        
+        if(ant == NULL) {
+        	novo_no->next = *piece;
+		} else {
+			if(aux->next == NULL) {
+				ant->next = novo_no;
+				novo_no->next = aux;
+			} else {
+				aux->next = novo_no;
+			}
+			
+		}
+        
     }
     return 1;
 }

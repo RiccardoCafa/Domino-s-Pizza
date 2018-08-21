@@ -31,7 +31,16 @@ namespace Domino_s_Pizza_Launcher
         private void btn_mod_Click(object sender, EventArgs e)
         {
             actualVersion = modBox.Text;
+            Gamepath = System.IO.Path.GetFullPath("../Domino-s-Pizza-C/" + actualVersion + "/Imagens/Button_01.jpg");
+            btn_play.Image = Image.FromFile(Gamepath);
+            Gamepath = System.IO.Path.GetFullPath("../Domino-s-Pizza-C/" + actualVersion + "/Imagens/Button_02.jpg");
+            btn_mod.Image = Image.FromFile(Gamepath);
+            Gamepath = System.IO.Path.GetFullPath("../Domino-s-Pizza-C/" + actualVersion + "/Imagens/Background.jpg");
+            this.BackgroundImage = Image.FromFile(Gamepath);
+            Gamepath = System.IO.Path.GetFullPath("../Domino-s-Pizza-C/" + actualVersion + "/Imagens/Icone.ico");
+            this.Icon = new Icon(Gamepath);
             MessageBox.Show("Mod " + actualVersion + " selecionado.");
+
         }
     }
 }

@@ -24,13 +24,6 @@ keybd_event (VK_MENU, 0x38, KEYEVENTF_KEYUP, 0);// para maximizar a tela ao abri
 	tp_Piece *p2 = init_piece();//cria jogador dois
 	tp_Piece *p_atu, *p_aux;//cria as listas auxiliares
 	
-//	listad_insere_peca_ord(&p1, 3, 4);
-//	//listad_insere_peca_ord(&p1, 5, 4);
-//	player_imprime(p1);
-//	listad_insere_peca_ord(&p1, 1, 3);
-//	player_imprime(p1);
-//	listad_insere_peca_ord(&p1, 1, 0);
-	
 	system("pause");
 	
 	tp_stack heap;
@@ -112,7 +105,7 @@ keybd_event (VK_MENU, 0x38, KEYEVENTF_KEYUP, 0);// para maximizar a tela ao abri
 					continue;
 				}
 				pop(&heap, &l, &r);
-				listad_insere_peca(&p_atu, l, r);
+				listad_insere_peca_ord(&p_atu, l, r);
 				printf("Peças do jogador:\n");
 				player_imprime(p_atu);
 				feito = 1;

@@ -98,7 +98,7 @@ keybd_event (VK_MENU, 0x38, KEYEVENTF_KEYUP, 0);// para maximizar a tela ao abri
 					break;
 				}
 				pop(&heap, &l, &r);
-				listad_insere_peca(&p_atu, l, r);
+				listad_insere_peca_ord(&p_atu, l, r);
 				printf("Peças do jogador:\n");
 				player_imprime(p_atu);
 				feito = 1;

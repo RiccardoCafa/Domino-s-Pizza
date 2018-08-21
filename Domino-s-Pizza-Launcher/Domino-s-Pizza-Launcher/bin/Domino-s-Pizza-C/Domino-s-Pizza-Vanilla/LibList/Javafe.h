@@ -100,7 +100,37 @@ int remove_by_value_piece(tp_Piece **piece, int valor_l, int valor_r) {//remove 
 	return 1;
 }
 
-int listad_insere_peca(tp_Piece **piece, int left, int right) {//insere uma peca na lista
+int listad_insere_peca_ord(tp_Piece **l, int left, int right){
+	
+	tp_Piece *new_node, *atu, *ant;
+	
+	new_node = alloc_piece();
+
+	if (new_node == NULL) return 0;
+	
+	new_node->left = left;
+	new_node->right = right;
+	
+	atu = *l;
+	ant = NULL;
+
+	while((atu != NULL) && (atu->right + atu->left < left + right)){
+		ant = atu;
+		atu = atu->next;
+		
+	}
+	
+	if (ant == NULL) *l = new_node;
+	
+	else ant->next = new_node;
+	
+	new_node->next = atu;
+	
+	return 1;
+	
+}
+
+int listad_insere_pecas(tp_Piece **piece, int left, int right) {//insere uma peca na lista
     tp_Piece *aux;
     tp_Piece *novo_no;
     novo_no = alloc_piece();

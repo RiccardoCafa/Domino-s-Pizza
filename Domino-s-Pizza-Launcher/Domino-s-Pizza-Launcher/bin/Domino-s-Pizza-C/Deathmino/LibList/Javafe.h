@@ -120,42 +120,35 @@ int listad_insere_peca(tp_Piece **piece, int left, int right) {//insere uma peca
     return 1;
 }
 
-int listad_insere_peca_ord(tp_Piece **piece, int left, int right) {//insere uma peca na lista
-    tp_Piece *aux = *piece;
-    tp_Piece *ant = NULL;
-    tp_Piece *novo_no;
-    novo_no = alloc_piece();
-    if(!novo_no) return 0;
-    printf("1\n");
-    novo_no->left = left;
-    novo_no->right = right;
-    novo_no->next = NULL;
-    printf("2\n");
-    if(empty_piece(*piece)) {
-        *piece = novo_no;
-        printf("3\n");
-    } else {
-    	printf("4\n");
-    	
-        while(aux != NULL && left + right >= aux->next->left + aux->next->right) {
-        	ant = aux;
-            aux = aux->next;
-        }
-        
-        if(ant == NULL) {
-        	novo_no->next = *piece;
-		} else {
-			if(aux->next == NULL) {
-				ant->next = novo_no;
-				novo_no->next = aux;
-			} else {
-				aux->next = novo_no;
-			}
-			
-		}
-        
-    }
-    return 1;
+int listad_insere_peca_ord(tp_Piece **l, int left, int right){
+	
+	tp_Piece *new_node, *atu, *ant;
+	
+	new_node = alloc_piece();
+	
+	if (new_node == NULL) return 0;
+	
+	new_node->left = left;
+	new_node->right = right;
+	
+	atu = *l;
+	ant = NULL;
+	
+	while((atu != NULL) && (atu->right + atu->left < left + right)){
+		
+		ant = atu;
+		atu = atu->next;
+		
+	}
+	
+	if (ant == NULL) *l = new_node;
+	
+	else ant->next = new_node;
+	
+	new_node->next = atu;
+	
+	return 1;
+	
 }
 
 void player_imprime(tp_Piece *piece){//mosta as pecas na lista

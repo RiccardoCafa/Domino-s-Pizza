@@ -81,9 +81,9 @@ int Checkwin(tp_Piece *p1, tp_Piece *p2, tp_listade *jogo ,tp_stack *baralho){
         if(look_for_value(p2, jogo->ini->v_L, jogo->fim->v_R) == 1) return 0;//se existir chances de jogar//
         if(player_pecas_soma(p1) > player_pecas_soma(p2)) {
 		//soma as pecas que estao na mao de cada jogar se o jogador 1 tiver menos ele ganha se n o 2 ganha.
-            return 1;
-        } else if(player_pecas_soma(p1) < player_pecas_soma(p2)) {
             return 2;
+        } else if(player_pecas_soma(p1) < player_pecas_soma(p2)) {
+            return 1;
         } else {
         	return 3;
 		}

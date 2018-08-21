@@ -51,14 +51,26 @@ tp_Piece *position_piece(tp_Piece *piece, int pos) {//identifica a peca na posic
 int search_Piece(tp_Piece *fil, int left, int right) {//procura pela peca na lista
     // Retorna null caso ele nÃ£o encontre nada
     tp_Piece *aux = fil;
-    while((aux != NULL)) {
+    while(aux != NULL) {
         if(aux->left == left && aux->right == right) {
-            // Encontrou a peÃ§a
+            // Encontrou a peça
             return 1;
         }
-        aux=aux->next;
+        aux = aux->next;
     }
     return 0;
+}
+
+int look_for_value(tp_Piece *fil, int i_left, int f_right) {
+	tp_Piece *aux = fil;
+	while(aux != NULL) {
+        if(aux->left == i_left || aux->right == i_left || aux->left == f_right || aux->right == f_right) {
+            // Encontrou a peça
+            return 1;
+        }
+        aux = aux->next;
+    }
+	return 0;
 }
 
 int remove_by_value_piece(tp_Piece **piece, int valor_l, int valor_r) {//remove uma peca da lista pelo valor pedido

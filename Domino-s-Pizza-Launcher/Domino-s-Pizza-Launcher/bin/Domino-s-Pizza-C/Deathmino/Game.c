@@ -14,6 +14,7 @@
 //(____/'`\____)`\__,_)`\__)(_) (_)   (_) (_)(_)(_) (_)`\___/'
 
 int main() {
+	system("color 04");
 keybd_event (VK_MENU, 0x36, 0, 0); 
 keybd_event (VK_RETURN, 0x1C, 0, 0); 
 keybd_event (VK_RETURN, 0x1C, KEYEVENTF_KEYUP, 0); // Indica ao computador ativar a combinação de teclado Alt+Enter
@@ -22,6 +23,15 @@ keybd_event (VK_MENU, 0x38, KEYEVENTF_KEYUP, 0);// para maximizar a tela ao abri
 	tp_Piece *p1 = init_piece();//cria jogador um
 	tp_Piece *p2 = init_piece();//cria jogador dois
 	tp_Piece *p_atu, *p_aux;//cria as listas auxiliares
+	
+//	listad_insere_peca_ord(&p1, 3, 4);
+//	//listad_insere_peca_ord(&p1, 5, 4);
+//	player_imprime(p1);
+//	listad_insere_peca_ord(&p1, 1, 3);
+//	player_imprime(p1);
+//	listad_insere_peca_ord(&p1, 1, 0);
+	
+	system("pause");
 	
 	tp_stack heap;
 	
@@ -32,6 +42,7 @@ keybd_event (VK_MENU, 0x38, KEYEVENTF_KEYUP, 0);// para maximizar a tela ao abri
 	int l, r, vl, vr;
 	int WhoWins = 0;
 	introduction();//introducao do jogo (interface)
+	
 	system("cls");//apaga tudo que esta anterior a ele no prompt
 	
 	Game_init(&heap, &p1, &p2);//funcao que embaralha e distribui as pecas para os jogadores

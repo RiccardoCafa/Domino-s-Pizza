@@ -1,4 +1,3 @@
-//NOVA LISTA SUPER PODEROSA JAVAFE
 #ifndef LISTA_PIECE
 #define LISTA_PIECE
 
@@ -49,7 +48,7 @@ tp_Piece *position_piece(tp_Piece *piece, int pos) {//identifica a peca na posic
 }
 
 int search_Piece(tp_Piece *fil, int left, int right) {//procura pela peca na lista
-    // Retorna null caso ele não encontre nada
+    // Retorna null caso ele nao encontre nada
     tp_Piece *aux = fil;
     while(aux != NULL) {
         if(aux->left == left && aux->right == right) {
@@ -85,7 +84,7 @@ int remove_by_value_piece(tp_Piece **piece, int valor_l, int valor_r) {//remove 
 		atu = atu->next;
 	}
 	if(atu == NULL) {
-		//Nao existe o endereço para tal peça
+		//Nao existe o endereco para tal peca
 		return 0;
 	} else {
 		if(ant != NULL) {
@@ -125,7 +124,6 @@ void player_imprime(tp_Piece *piece){//mosta as pecas na lista
     aux = piece;
     int count = 0;
     while(aux != NULL) {
-        //printf("[%d|%d]\t", aux->left, aux->right);
         fprintf(stderr, "%d - [%d|%d]\t", count, aux->left, aux->right);
         aux = aux->next;
         count++;
@@ -144,6 +142,30 @@ int player_pecas_soma (tp_Piece *piece){ //soma as pecas que estao na mao do jog
     }
     return soma;
 }
-
+int listad_insere_peca_ord(tp_Piece **piece, int left, int right) {//insere uma peca na lista de forma ordenada
+ 	tp_Piece *novo_no, *aux, *ant;
+    novo_no = alloc_piece();
+    if(novo_no == NULL) return 0;
+    novo_no->left = left;
+    novo_no->right = right;
+    aux = *piece;
+    ant = *piece;
+    while((aux != NULL) && (aux->next->left + aux->next->right < left+right)) {
+        ant = aux;
+		aux = aux->next;
+        
+    }
+    if(aux == NULL) {
+        novo_no->next = NULL;
+        aux = novo_no;
+        ant->next = aux;
+    } else {
+        novo_no->next = aux->next;
+        aux = novo_no;
+        ant->next = aux;
+    }
+    
+    return 1;
+}
 
 #endif

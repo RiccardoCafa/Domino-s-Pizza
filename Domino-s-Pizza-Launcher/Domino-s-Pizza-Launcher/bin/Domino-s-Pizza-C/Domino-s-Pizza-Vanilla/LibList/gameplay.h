@@ -24,9 +24,9 @@ int Game_init(tp_stack *heap, tp_Piece **p1, tp_Piece **p2) {//gera o baralho em
 		int i;
 		for (i=0; i < 7; i++) {	//Loop para add 7 fichas na mao do jogador;
 			pop(heap, &x, &y); // Retira as fichas do deck
-			listad_insere_peca(p1, x, y); // Insere as fichas na mao do jogador p1.
+			listad_insere_peca_ord(p1, x, y); // Insere as fichas na mao do jogador p1.	
 			pop(heap, &x, &y); // Retira as fichas do deck
-			listad_insere_peca(p2, x, y);
+			listad_insere_peca_ord(p2, x, y);
 		}
 		return 1;
 	}

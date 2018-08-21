@@ -89,19 +89,20 @@
             this.gitLink.ActiveLinkColor = System.Drawing.Color.RoyalBlue;
             this.gitLink.AutoSize = true;
             this.gitLink.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.gitLink.Location = new System.Drawing.Point(399, 553);
+            this.gitLink.Location = new System.Drawing.Point(407, 669);
             this.gitLink.Name = "gitLink";
             this.gitLink.Size = new System.Drawing.Size(167, 13);
             this.gitLink.TabIndex = 5;
             this.gitLink.TabStop = true;
             this.gitLink.Text = "Clique aqui para acessar a página";
+            this.gitLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.gitLink_LinkClicked);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.ClientSize = new System.Drawing.Size(1025, 575);
+            this.ClientSize = new System.Drawing.Size(1023, 700);
             this.Controls.Add(this.gitLink);
             this.Controls.Add(this.Titulo);
             this.Controls.Add(this.modBox);

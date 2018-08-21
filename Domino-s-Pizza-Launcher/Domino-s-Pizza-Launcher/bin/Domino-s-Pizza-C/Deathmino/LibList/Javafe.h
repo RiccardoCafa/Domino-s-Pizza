@@ -125,7 +125,7 @@ int listad_insere_peca_ord(tp_Piece **l, int left, int right){
 	tp_Piece *new_node, *atu, *ant;
 	
 	new_node = alloc_piece();
-	
+
 	if (new_node == NULL) return 0;
 	
 	new_node->left = left;
@@ -133,9 +133,8 @@ int listad_insere_peca_ord(tp_Piece **l, int left, int right){
 	
 	atu = *l;
 	ant = NULL;
-	
+
 	while((atu != NULL) && (atu->right + atu->left < left + right)){
-		
 		ant = atu;
 		atu = atu->next;
 		

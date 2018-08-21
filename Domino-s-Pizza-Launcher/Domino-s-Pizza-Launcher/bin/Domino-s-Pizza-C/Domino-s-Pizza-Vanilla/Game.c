@@ -5,6 +5,8 @@
 #include <windows.h>
 #include "domino_libs.h"
 
+void TeclaContinuarTurno() ;
+
 int main() {
 keybd_event (VK_MENU, 0x36, 0, 0); 
 keybd_event (VK_RETURN, 0x1C, 0, 0); 
@@ -32,7 +34,7 @@ keybd_event (VK_MENU, 0x38, KEYEVENTF_KEYUP, 0);// para maximizar a tela ao abri
 	while(WhoWins == 0) {//comeco da partida
 		WhoWins = Checkwin(p1, p2, game, &heap);//verificar quem ganhou
 		feito = 0;
-		
+		system("cls");
 		printf("\n\n\n\n\n\n\n\n\n");
 		printf("* Vez do Jogador %d *\n", turno);
 		printf("\n\nMesa:\n");
@@ -41,7 +43,8 @@ keybd_event (VK_MENU, 0x38, KEYEVENTF_KEYUP, 0);// para maximizar a tela ao abri
 		player_imprime(p_atu);
 		
 		while(feito == 0) {//escolher a opcao de jogada
-			printf("\nO que deseja fazer?\n1 - Jogar peça\n2 - Cava\n\n Opção: ");
+			if(stack_empty(&heap) == 0) printf("\nO que deseja fazer?\n1 - Jogar peça\n2 - Cava\n\n Opção: "); else
+			printf("\nO que deseja fazer?\n1 - Jogar peça\n2 - Passa turno\n\n Opção: ");
 			scanf("%d", &chs);
 			if(chs == 1) {
 				// Jogar peça
@@ -89,7 +92,7 @@ keybd_event (VK_MENU, 0x38, KEYEVENTF_KEYUP, 0);// para maximizar a tela ao abri
 				}
 			} else if(chs == 2) {
 				// Cava
-				if(stack_empty(&heap)) {//caso o cave esta vazio
+				if(stack_empty(&heap)) { //caso o cave esta vazio
 					printf("Ops! Está vazio!\n");
 					//passTurn(&turno, p1, p2, &p_atu);
 					break;
@@ -102,23 +105,44 @@ keybd_event (VK_MENU, 0x38, KEYEVENTF_KEYUP, 0);// para maximizar a tela ao abri
 				system("cls");
 			}
 		}
+		TeclaContinuarTurno();
 		passTurn(&turno, p1, p2, &p_atu);
 	}
 	
-	switch(WhoWins) {//apartir do valor que a funcao retorna mostra a mensagem
+	system("cls");
+	switch(WhoWins) { //apartir do valor que a funcao retorna mostra a mensagem
 		case 1:
-			printf("Player 1 ganhou!\n");
+			printf("Player 1: ");
+			player_imprime(p1);
+			printf("Player 2: ");
+			player_imprime(p2);
+			printf("\nPlayer 1 ganhou!\n");
 			break;
 		case 2:
-			printf("Player 2 ganhou!\n");
+			printf("Player 1: ");
+			player_imprime(p1);
+			printf("Player 2: ");
+			player_imprime(p2);
+			printf("\nPlayer 2 ganhou!\n");
 			break;
 		case 3:
-			printf("Houve empate!\n");
+			player_imprime(p1);
+			player_imprime(p2);
+			printf("\nHouve empate!\n");
 			break;
 		case 0:
-			printf("What como saiu do loop?\n");
+			printf("\nWhat como saiu do loop?\n");
 			break;
 	}
 	
 	return 0;
+}
+
+void TeclaContinuarTurno() {
+	char c;
+	system("cls");
+	printf("\n\n\n\n\n\n\n\n\n");
+	printf("Pressione qualquer tecla para passar de turno...\n");
+	c = getch();
+	system("cls");
 }

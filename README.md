@@ -1,4 +1,4 @@
-## welcome to the domino game made at the command prompt
+## welcome to the domino game
 
 This game was made by students of SENAI CIMATEC. 
 

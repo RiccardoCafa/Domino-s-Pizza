@@ -46,8 +46,6 @@ keybd_event (VK_MENU, 0x38, KEYEVENTF_KEYUP, 0);// para maximizar a tela ao abri
 			passTurn(&turno, p1, p2, &p_atu);
 		}
 		system("cls");
-		printf("BOT:\n");
-		player_imprime(p2);
 		printf("\n\n\n\n\n\n\n\n\n");
 		printf("* Vez do Jogador %d *\n", turno);
 		printf("\n\nMesa:\n");

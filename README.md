@@ -16,7 +16,5 @@ Then write the mod name you want to load and click in "MOD", or just hit play fo
 *it starts on fullscreen, type CNTRL + ENTER to switch*
 
 # Images
-<img src="https://user-images.githubusercontent.com/32469468/84312902-1c55e480-ab3c-11ea-904e-f79a01741d13.jpg" width=350/>
-<img src="https://user-images.githubusercontent.com/32469468/84312910-1e1fa800-ab3c-11ea-8225-41595eba6455.jpg" width=350/>
-<img src="https://user-images.githubusercontent.com/32469468/84312913-1f50d500-ab3c-11ea-9f5d-8aaf87a576c4.jpg" width=350/>
-<img src="https://user-images.githubusercontent.com/32469468/84312914-20820200-ab3c-11ea-91f5-a34cd7d032fd.jpg" width=350/>
+<img src="https://user-images.githubusercontent.com/32469468/84312902-1c55e480-ab3c-11ea-904e-f79a01741d13.jpg" width=350/> <img src="https://user-images.githubusercontent.com/32469468/84312910-1e1fa800-ab3c-11ea-8225-41595eba6455.jpg" width=350/>
+<img src="https://user-images.githubusercontent.com/32469468/84312913-1f50d500-ab3c-11ea-9f5d-8aaf87a576c4.jpg" width=350/> <img src="https://user-images.githubusercontent.com/32469468/84312914-20820200-ab3c-11ea-91f5-a34cd7d032fd.jpg" width=350/>
